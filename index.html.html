@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>متعقب العادات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&family=Outfit:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F2F3FB;
+  --surface: #FFFFFF;
+  --ink: #12163D;
+  --muted: #5E658F;
+  --line: #DDE0F2;
+  --hero: #3B4BFF;
+  --hero-ink: #FFFFFF;
+  --c1: #3B4BFF;
+  --c2: #12B886;
+  --c3: #F59F00;
+  --c4: #F03E5E;
+  --c5: #8B5CF6;
+  --warn: #E03150;
+  --display: "Reem Kufi", "Tajawal", "Segoe UI", Tahoma, sans-serif;
+  --body: "Tajawal", "Segoe UI", Tahoma, Arial, sans-serif;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1030; --surface: #161B4A; --ink: #EEF0FF; --muted: #9BA3D6; --line: #272E6B;
+    --hero: #3443F0; --c1: #7482FF; --c2: #2FD6A4; --c3: #FFC247; --c4: #FF6F8A; --c5: #A78BFA; --warn: #FF7C93;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1030; --surface: #161B4A; --ink: #EEF0FF; --muted: #9BA3D6; --line: #272E6B;
+  --hero: #3443F0; --c1: #7482FF; --c2: #2FD6A4; --c3: #FFC247; --c4: #FF6F8A; --c5: #A78BFA; --warn: #FF7C93;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; transition: background-color .25s ease, color .25s ease; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 18px 14px 40px; }
+.num { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+:focus-visible { outline: 3px solid var(--c3); outline-offset: 2px; }
+
+/* header */
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+.ttl h1 { font-family: var(--display); font-size: 22px; line-height: 1.2; margin: 0; font-weight: 700; }
+.sub { color: var(--muted); font-size: 13.5px; }
+.who { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.iconbtn { font: inherit; font-size: 18px; width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.iconbtn:hover { border-color: var(--c1); }
+.namechip { font: inherit; font-weight: 700; font-size: 15px; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; min-height: 42px; max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.namechip:hover { border-color: var(--c1); }
+.namechip::after { content: " ✎"; color: var(--muted); font-weight: 400; font-size: 13px; }
+#nameInput { font: inherit; font-weight: 700; color: var(--ink); background: var(--surface); border: 2px solid var(--c1); border-radius: 999px; padding: 6px 14px; width: 170px; min-height: 42px; }
+
+/* hero quote */
+.hero { position: relative; overflow: hidden; background: var(--hero); color: var(--hero-ink); border-radius: 30px 30px 30px 8px; padding: 22px 20px 16px; margin-bottom: 16px; }
+.hero::before { content: "\201D"; position: absolute; top: -34px; inset-inline-end: 12px; font-family: var(--display); font-size: 150px; line-height: 1; opacity: .16; pointer-events: none; }
+.hq { position: relative; font-family: var(--display); font-size: clamp(20px, 5.4vw, 27px); line-height: 1.65; font-weight: 500; overflow-wrap: anywhere; min-height: 3.3em; }
+.hs { position: relative; margin-top: 8px; font-size: 13.5px; opacity: .85; }
+.hbtn { position: relative; margin-top: 12px; font: inherit; font-weight: 700; font-size: 14px; color: var(--hero-ink); background: transparent; border: 1.5px solid rgba(255,255,255,.7); border-radius: 999px; padding: 6px 16px; cursor: pointer; min-height: 38px; }
+.hbtn:hover { background: rgba(255,255,255,.14); }
+.hero :focus-visible { outline-color: #fff; }
+
+/* tabs */
+.tabs { display: flex; gap: 4px; padding: 4px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; margin-bottom: 16px; }
+.tab { flex: 1; font: inherit; font-weight: 700; color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 8px 12px; cursor: pointer; min-height: 42px; transition: background-color .15s ease, color .15s ease; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+
+/* panels / cards */
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 24px; padding: 18px 14px; margin-bottom: 14px; }
+h2 { font-family: var(--display); font-size: 19px; margin: 0 0 14px; font-weight: 700; }
+h3 { font-size: 14.5px; margin: 20px 0 6px; color: var(--muted); font-weight: 700; }
+
+/* rings */
+.ring { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+.ring .trk { fill: none; stroke: var(--line); }
+.ring .val { fill: none; stroke-linecap: round; transition: stroke-dashoffset .5s ease; }
+.ring text { font-family: var(--display); font-weight: 700; fill: var(--ink); text-anchor: middle; dominant-baseline: central; direction: ltr; unicode-bidi: isolate; }
+.rings3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.rg { text-align: center; min-width: 0; }
+.rg .l { font-weight: 700; margin-top: 6px; font-size: 15px; }
+.rg .s { color: var(--muted); font-size: 12.5px; }
+
+.nudge { background: var(--surface); border: 1.5px solid var(--line); border-inline-start: 6px solid var(--c1); border-radius: 16px; padding: 12px 14px; margin-bottom: 14px; font-size: 15px; }
+.nudge.warn { border-inline-start-color: var(--c4); }
+.nudge.good { border-inline-start-color: var(--c2); }
+
+.weeknav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+.weeknav .label { font-weight: 700; }
+.btn { font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 16px; cursor: pointer; min-height: 40px; }
+.btn:hover { border-color: var(--c1); }
+.btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 700; }
+.btn.danger { color: var(--warn); }
+.btn:disabled { opacity: .4; cursor: default; }
+
+/* habit board */
+.board { background: var(--surface); border: 1.5px solid var(--line); border-radius: 24px; overflow-x: auto; }
+.grid { min-width: 340px; }
+.row { display: grid; grid-template-columns: minmax(108px, 1.6fr) repeat(7, minmax(0, 1fr)); align-items: center; }
+.hwrap { border-bottom: 1.5px solid var(--line); }
+.hwrap:last-child { border-bottom: 0; }
+.headrow { border-bottom: 1.5px solid var(--line); }
+.dh { text-align: center; padding: 10px 0 8px; font-size: 12px; color: var(--muted); line-height: 1.3; }
+.dh b { display: block; font-family: var(--display); font-size: 16px; color: var(--ink); font-weight: 700; }
+.dh.today { background: color-mix(in srgb, var(--c3) 16%, var(--surface)); }
+
+.hname { padding: 12px 12px; min-width: 0; border-inline-start: 5px solid var(--hc, var(--c1)); }
+.hn { font: inherit; font-weight: 700; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: start; overflow-wrap: anywhere; }
+.hn::after { content: " ▾"; color: var(--muted); font-size: 12px; }
+.hn[aria-expanded="true"]::after { content: " ▴"; }
+.hname .m { font-size: 12px; color: var(--muted); }
+.moti { font: inherit; font-size: 12.5px; margin-top: 4px; color: var(--hc, var(--c1)); background: transparent; border: 1.5px solid var(--hc, var(--c1)); border-radius: 999px; padding: 0 12px; cursor: pointer; }
+.hname input.rename { font: inherit; width: 100%; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 10px; padding: 4px 8px; }
+
+.c { position: relative; display: flex; justify-content: center; align-items: center; padding: 10px 0; align-self: stretch; }
+.c.today { background: color-mix(in srgb, var(--c3) 16%, var(--surface)); }
+.c.link::before { content: ""; position: absolute; top: 50%; inset-inline-start: 50%; width: 100%; height: 6px; transform: translateY(-50%); background: var(--hc, var(--c1)); opacity: .45; z-index: 0; }
+.dot { position: relative; z-index: 1; width: clamp(26px, 8vw, 36px); aspect-ratio: 1; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); cursor: pointer; padding: 0; color: var(--hi, #fff); font-size: 16px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center; justify-content: center; font-family: var(--body); transition: background-color .12s ease, border-color .12s ease, transform .12s ease; }
+.dot:hover:not(:disabled) { border-color: var(--hc, var(--c1)); }
+.dot:active:not(:disabled) { transform: scale(.9); }
+.dot:disabled { opacity: .3; cursor: default; background: transparent; border-style: dashed; }
+.del { margin: 0 4px; border: 0; background: transparent; color: var(--warn); cursor: pointer; font: inherit; font-size: 22px; line-height: 1; padding: 4px 8px; }
+
+.panel { padding: 6px 14px 16px; background: color-mix(in srgb, var(--paper) 60%, var(--surface)); border-inline-start: 5px solid var(--hc, var(--c1)); }
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px; }
+.facts div { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px 10px; min-width: 0; }
+.facts span.k { display: block; font-size: 12px; color: var(--muted); }
+.facts b { font-size: 14.5px; overflow-wrap: anywhere; }
+.panel label { display: block; font-weight: 700; font-size: 14px; margin: 10px 0 4px; }
+.panel textarea { width: 100%; font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px 10px; resize: vertical; }
+.hint { color: var(--muted); font-size: 12.5px; margin-top: 6px; }
+
+.mot { margin: 0 14px 14px; padding: 12px 14px; border-radius: 16px; background: color-mix(in srgb, var(--hc, var(--c3)) 14%, var(--surface)); border: 1.5px solid color-mix(in srgb, var(--hc, var(--c3)) 55%, var(--line)); }
+.mot .mq { font-family: var(--display); font-size: 18px; line-height: 1.55; overflow-wrap: anywhere; }
+.mot .mw { color: var(--muted); font-size: 14px; margin-top: 6px; overflow-wrap: anywhere; }
+
+.tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; align-items: center; }
+.add { display: flex; gap: 8px; flex: 1 1 260px; }
+.add input { flex: 1; min-width: 0; font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 16px; min-height: 42px; }
+.note { color: var(--muted); font-size: 13px; margin-top: 16px; }
+.rule { margin-top: 18px; padding: 12px 14px; border: 1.5px dashed var(--line); border-radius: 16px; color: var(--muted); font-size: 14px; }
+.rule b { color: var(--ink); }
+
+details.backup { margin-top: 18px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; padding: 10px 14px; }
+details.backup summary { cursor: pointer; font-weight: 700; }
+details.backup textarea { width: 100%; margin-top: 10px; min-height: 90px; font: 12.5px/1.4 monospace; direction: ltr; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 12px; padding: 8px; }
+#bkMsg { color: var(--muted); font-size: 13px; margin-top: 8px; }
+
+/* stats */
+.hstat { padding: 14px 0; border-top: 1.5px solid var(--line); }
+.hstat .nm { min-width: 0; font-weight: 700; overflow-wrap: anywhere; padding-inline-start: 10px; border-inline-start: 5px solid var(--hc, var(--c1)); }
+.hstat .nm small { display: block; font-weight: 400; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.minis { display: flex; justify-content: space-around; gap: 6px; margin-top: 12px; }
+.mini { text-align: center; flex: 1 1 0; min-width: 0; }
+.mini small { display: block; font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+.empty { color: var(--muted); padding: 10px 0; }
+.ver { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding-top: 16px; border-top: 1.5px solid var(--line); line-height: 1.9; }
+.credit { font-family: var(--display); font-size: 15px; color: var(--ink); }
+.credit b { color: var(--c1); }
+
+.rings4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 8px; }
+.rings4.compact { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.rings4.compact .rg .l { font-size: 13.5px; }
+@media (min-width: 560px) { .rings4 { grid-template-columns: repeat(4, 1fr); } }
+.basis { display: flex; gap: 4px; padding: 3px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 999px; width: fit-content; max-width: 100%; margin: 14px auto 0; }
+.bs { font: inherit; font-size: 13.5px; font-weight: 700; color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 4px 14px; cursor: pointer; min-height: 34px; }
+.bs[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.basis-note { color: var(--muted); font-size: 12.5px; text-align: center; margin: 8px 0 14px; }
+.welcome { background: var(--surface); border: 1.5px solid var(--line); border-radius: 30px 30px 30px 8px; padding: 24px 18px; }
+.welcome h2 { font-size: 26px; margin: 0 0 6px; }
+.welcome p { margin: 0 0 14px; color: var(--muted); }
+.welcome label { display: block; font-weight: 700; margin: 16px 0 8px; }
+.welcome input[type="text"] { width: 100%; font: inherit; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 999px; padding: 10px 16px; min-height: 46px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; min-height: 40px; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.chip[aria-pressed="true"]::before { content: "✓ "; }
+.rowadd { display: flex; gap: 8px; margin-top: 12px; }
+.rowadd input { flex: 1; min-width: 0; }
+.startbtn { width: 100%; margin-top: 22px; min-height: 52px; font-size: 17px; }
+.opt { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 14px; }
+
+html[lang="en"] { --display: "Outfit", "Segoe UI", system-ui, sans-serif; --body: "Inter", "Segoe UI", system-ui, sans-serif; }
+header.top { flex-wrap: wrap; }
+.who { flex-wrap: wrap; justify-content: flex-end; }
+.langbtn { font-size: 14px; font-weight: 700; font-family: var(--body); }
+.hq.ar { font-size: 20px; opacity: .92; margin-top: 10px; min-height: 0; direction: rtl; text-align: right; }
+.dot[data-s="done"] { background: var(--hc, var(--c1)); border-color: var(--hc, var(--c1)); color: var(--hi, #fff); }
+.dot[data-s="part"] { border-color: var(--hc, var(--c1)); color: var(--hc, var(--c1)); }
+.dot[data-s="slip"] { background: var(--warn); border-color: var(--warn); color: #fff; }
+.dot[data-s="frozen"] { border-style: dashed; border-color: var(--c1); color: var(--c1); font-size: 14px; }
+.dot[data-s="off"] { border-style: dashed; opacity: .55; color: var(--muted); }
+.chips2 { display: flex; flex-wrap: wrap; gap: 6px; }
+.wchip { font: inherit; font-size: 13.5px; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; min-height: 34px; }
+.wchip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.wchip:disabled { opacity: .4; cursor: default; }
+.wchip.all { border-style: dashed; }
+.sect { margin-top: 14px; }
+.lbl { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.numin { font: inherit; width: 90px; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: 6px 10px; }
+.cnt { display: flex; align-items: center; gap: 8px; margin: 10px 0 4px; flex-wrap: wrap; }
+.cntv { font-family: var(--display); font-weight: 700; min-width: 54px; text-align: center; }
+.lbl2 { font-size: 13.5px; color: var(--muted); }
+.btn.sm { min-height: 34px; padding: 2px 12px; font-size: 14px; }
+.rn { font-size: 13.5px; padding: 4px 0; border-top: 1px dashed var(--line); overflow-wrap: anywhere; }
+.arch { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-top: 1px dashed var(--line); flex-wrap: wrap; }
+.bars { display: grid; gap: 8px; }
+.bar { display: grid; grid-template-columns: 52px 1fr 52px; align-items: center; gap: 8px; font-size: 13.5px; }
+.bt { height: 12px; border-radius: 999px; background: var(--line); overflow: hidden; display: block; }
+.bf { display: block; height: 100%; background: var(--c2); border-radius: 999px; }
+.bv { text-align: end; font-weight: 700; }
+.hmwrap { direction: ltr; overflow-x: auto; margin-top: 12px; padding-bottom: 4px; }
+.hmm { display: grid; grid-template-columns: repeat(var(--n), 12px); gap: 3px; height: 14px; font-size: 10px; color: var(--muted); white-space: nowrap; margin-bottom: 2px; width: max-content; }
+.hm { display: grid; grid-template-rows: repeat(7, 12px); grid-auto-flow: column; grid-auto-columns: 12px; gap: 3px; width: max-content; }
+.hm i { display: block; border-radius: 3px; background: var(--line); }
+.hm i.f { background: transparent; }
+.hm i.n { opacity: .35; }
+.hm i.d { background: var(--hc, var(--c1)); }
+.hm i.s { background: var(--warn); }
+.hm i.z { background: color-mix(in srgb, var(--c1) 35%, var(--surface)); }
+.hm i.o { background: repeating-linear-gradient(135deg, var(--line) 0 2px, transparent 2px 4px); }
+.hm i.m { background: color-mix(in srgb, var(--warn) 22%, var(--surface)); }
+.hm i.l1 { background: color-mix(in srgb, var(--c1) 28%, var(--surface)); }
+.hm i.l2 { background: color-mix(in srgb, var(--c1) 52%, var(--surface)); }
+.hm i.l3 { background: color-mix(in srgb, var(--c1) 76%, var(--surface)); }
+.hm i.l4 { background: var(--c1); }
+.toast { position: fixed; inset-inline: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); max-width: 520px; margin: 0 auto; background: var(--ink); color: var(--paper); border-radius: 18px; padding: 12px 16px; z-index: 50; font-weight: 700; text-align: center; }
+select { font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 12px; min-height: 42px; }
+.add { flex-wrap: wrap; }
+.add input[type="number"] { flex: 0 0 96px; }
+.opt select { margin-inline-start: 6px; min-height: 36px; }
+#newHabit { flex: 1 1 100%; }
+.weeknav .btn { padding: 6px 12px; font-size: 14px; }
+.tabs .tab { padding: 8px 6px; font-size: 14.5px; }
+.subrow { background: color-mix(in srgb, var(--paper) 55%, var(--surface)); }
+.hname.sub { padding: 6px 10px; padding-inline-start: 20px; font-size: 14px; border-inline-start: 5px solid color-mix(in srgb, var(--hc, var(--c1)) 45%, transparent); }
+.opt2 { color: var(--muted); font-size: 11.5px; }
+.dot.sm { width: clamp(22px, 6.8vw, 28px); font-size: 13px; border-width: 1.5px; }
+.del.armed { color: #fff; background: var(--warn); border-radius: 999px; font-size: 13px; padding: 4px 10px; }
+.hm i.p { background: color-mix(in srgb, var(--hc, var(--c1)) 40%, var(--surface)); }
+.flbl { display: block; font-weight: 700; font-size: 14px; margin: 12px 0 4px; }
+.tin, textarea[data-field^="wr-"] { width: 100%; font: inherit; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 12px; padding: 8px 10px; min-height: 42px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.yr { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.yrt { flex: 1 1 170px; display: grid; gap: 6px; font-weight: 700; }
+.wk7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.sqw { border: 2px solid transparent; border-radius: 14px; padding: 6px 0; text-align: center; cursor: pointer; color: var(--ink); font: inherit; min-width: 0; line-height: 1.25; }
+.sqw span { display: block; font-size: 11px; opacity: .85; }
+.sqw b { display: block; font-family: var(--display); font-size: 17px; }
+.sqw small { display: block; font-size: 11px; }
+.sqw[aria-pressed="true"], .calc[aria-pressed="true"] { border-color: var(--ink); }
+.sqw:disabled, .calc:disabled { opacity: .4; cursor: default; }
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cwd { text-align: center; font-size: 11px; color: var(--muted); }
+.calc { aspect-ratio: 1; border: 2px solid transparent; border-radius: 10px; font: inherit; font-size: 13px; cursor: pointer; color: var(--ink); padding: 0; }
+.zc0, .hm i.zc0 { background: color-mix(in srgb, var(--warn) 55%, var(--surface)); }
+.zc1, .hm i.zc1 { background: color-mix(in srgb, var(--c5) 28%, var(--surface)); }
+.zc2, .hm i.zc2 { background: color-mix(in srgb, var(--c5) 48%, var(--surface)); }
+.zc3, .hm i.zc3 { background: color-mix(in srgb, var(--c5) 72%, var(--surface)); }
+.zc4, .hm i.zc4 { background: var(--c5); }
+.zcu, .hm i.zcu { background: var(--line); }
+.zcf, .hm i.zcf { background: transparent; }
+.sqw.zc3, .sqw.zc4, .calc.zc3, .calc.zc4 { color: #fff; }
+.tips { margin: 0; padding-inline-start: 20px; display: grid; gap: 8px; }
+.calcrow { display: flex; gap: 8px; flex-wrap: wrap; }
+.calcchip { background: var(--paper); border: 1.5px solid var(--line); border-radius: 16px; padding: 8px 14px; text-align: center; min-width: 84px; }
+.calcchip b { display: block; font-family: var(--display); font-size: 20px; }
+.calcchip small { color: var(--muted); font-size: 12px; }
+@media (prefers-reduced-motion: reduce) { .dot, .ring .val, body, .tab { transition: none; } }
+@media (max-width: 420px) {
+  .hname { padding: 10px 8px; }
+  .namechip { max-width: 150px; }
+  #nameInput { width: 140px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="ttl">
+      <h1 id="appTitle"></h1>
+      <div class="sub" id="today"></div>
+    </div>
+    <div class="who" id="whoBox">
+      <button class="iconbtn langbtn" id="langBtn" data-act="lang">EN</button>
+      <button class="iconbtn" id="themeBtn" data-act="theme">🌙</button>
+      <button class="namechip" id="nameBtn" data-act="editname"></button>
+      <input id="nameInput" type="text" maxlength="24" hidden>
+    </div>
+  </header>
+
+  <section class="welcome" id="welcome" hidden>
+    <h2 id="wTitle"></h2>
+    <p id="wP"></p>
+    <label for="wName" id="wNameLbl"></label>
+    <input id="wName" type="text" maxlength="24" autocomplete="off">
+    <label id="wLbl"></label>
+    <div class="chips" id="wChips" role="group"></div>
+    <div class="rowadd">
+      <input id="wCustom" type="text" maxlength="40">
+      <button class="btn" id="wAddBtn" data-act="addcustom"></button>
+    </div>
+    <button class="btn primary startbtn" id="startBtn" data-act="start" disabled></button>
+    <p class="hint" id="wHint" style="margin:10px 0 0"></p>
+  </section>
+
+  <section class="hero" id="heroBox">
+    <div class="hq" id="quoteText" aria-live="polite"></div>
+    <div class="hq ar" id="quoteAr" hidden></div>
+    <div class="hs" id="quoteSrc"></div>
+    <button class="hbtn" id="newQuoteBtn" data-act="newquote"></button>
+  </section>
+
+  <div class="tabs" id="tabsBox" role="tablist">
+    <button class="tab" role="tab" id="tabTrack" data-act="tab" data-tab="track" aria-selected="true"></button>
+    <button class="tab" role="tab" id="tabStats" data-act="tab" data-tab="stats" aria-selected="false"></button>
+    <button class="tab" role="tab" id="tabSleep" data-act="tab" data-tab="sleep" aria-selected="false"></button>
+  </div>
+
+  <main id="pageTrack">
+    <section class="card" id="summary"></section>
+    <div id="nudge"></div>
+
+    <div class="weeknav">
+      <button class="btn" id="prevBtn" data-act="prev"></button>
+      <div class="label" id="weekLabel"></div>
+      <button class="btn" id="nextBtn" data-act="next"></button>
+    </div>
+
+    <div class="board"><div class="grid" id="grid"></div></div>
+
+    <div class="tools">
+      <div class="add">
+        <input id="newHabit" type="text" maxlength="40">
+        <select id="newType">
+          <option value="build" id="optBuild"></option>
+          <option value="quit" id="optQuit"></option>
+          <option value="prayers" id="optPrayers"></option>
+          <option value="water" id="optWater"></option>
+          <option value="meds" id="optMeds"></option>
+          <option value="multi" id="optMulti"></option>
+        </select>
+        <input id="newTarget" type="number" min="1" max="99" hidden>
+        <button class="btn primary" id="addBtn" data-act="add"></button>
+      </div>
+      <button class="btn" data-act="edit" id="editBtn"></button>
+    </div>
+
+    <div class="rule" id="ruleBox"></div>
+
+    <details class="backup">
+      <summary id="sTitle"></summary>
+      <label class="opt"><input type="checkbox" id="relToggle" checked> <span id="relLbl"></span></label>
+      <label class="opt"><span id="wsLbl"></span> <select id="wsSel"></select></label>
+      <div class="lbl" id="archTitle" style="margin-top:14px"></div>
+      <div id="archList"></div>
+      <p class="hint" id="sBkHint" style="margin-top:14px"></p>
+      <div class="tools" style="margin-top:6px">
+        <button class="btn" id="bkExport" data-act="bk-export"></button>
+        <button class="btn" id="bkImport" data-act="bk-import"></button>
+        <button class="btn" id="bkCsv" data-act="bk-csv"></button>
+      </div>
+      <textarea id="bkText" spellcheck="false"></textarea>
+      <div id="bkMsg" role="status"></div>
+    </details>
+
+    <div class="tools" style="margin-top:18px">
+      <button class="btn danger" data-act="reset" id="resetBtn"></button>
+    </div>
+    <p class="note" id="noteTxt"></p>
+  </main>
+
+  <main id="pageStats" hidden></main>
+  <main id="pageSleep" hidden></main>
+
+  <div class="ver"><div class="credit" id="credit"></div><span id="rights"></span><br><span id="verTxt"></span></div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "habit-tracker-v1";
+  var NOW0 = Date.now();
+  var DEFAULT_TITLE = "الانضباطي جاد";
+  var PALETTE = [["--c1", "#fff"], ["--c2", "#06281F"], ["--c3", "#2B1B00"], ["--c4", "#fff"], ["--c5", "#fff"]];
+  var MILESTONES = [7, 30, 90, 180, 365];
+  var FREEZES = 2;
+  var SUGGEST = [
+    ["التمرين", "Exercise"], ["الدراسة", "Study"], ["الصلاة بالتزام", "Prayer on time"], ["النوم المبكر", "Early sleep"],
+    ["القراءة", "Reading"], ["شرب الماء", "Drink water"], ["المشي", "Walking"], ["الأذكار", "Daily remembrance"],
+    ["ترتيب الغرفة", "Tidy my room"], ["وقت أقل على الجوال", "Less phone time"], ["التأمل", "Meditation"]
+  ];
+
+  /* ---------- جمل التحفيز ---------- */
+  var QUOTES = [];
+  function g(src, arr) { arr.forEach(function (t) { QUOTES.push([t, src]); }); }
+
+  g("من وحي «العادات الذرية»", [
+    "أنت ما تصعد لمستوى أهدافك، أنت تنزل لمستوى أنظمتك. رتّب نظامك قبل ما تلوم نفسك.",
+    "كل تسجيل ✓ هو صوت لصالح الشخص اللي تبي تصير عليه.",
+    "تحسّن واحد بالمئة كل يوم يبدو صغيراً، لكن جمعه عبر الشهور يصنع فرقاً ضخماً.",
+    "لا تسأل: هل أنا منضبط؟ اسأل: شو سوّى المنضبط اليوم؟ وسوِّ نفس الشي.",
+    "فوّتّ يوم؟ عادي. فوّتّ مرتين؟ هذا اللي يصير عادة. لا تفوّت مرتين.",
+    "اجعل العادة الصحيحة أسهل خطوة بجانبك، والعادة الضارة أبعد بخطوات.",
+    "ابدأ بدقيقتين فقط. البداية الصغيرة تهزم التسويف أكثر من الخطط الكبيرة.",
+    "الحماس يروح ويجي، والنظام هو اللي يبقى. ابنِ نظاماً ما يحتاج مزاج.",
+    "اربط عادتك الجديدة بعادة ثابتة عندك: بعد ما أسوي كذا، أسوي هذي.",
+    "هويتك تتكوّن من صغائر تكررها: كل مرة تحافظ فيها على وعدك، تثبّت من أنت.",
+    "الشي اللي تقيسه يتحسّن. سجّل بصدق، والنتيجة ما تكذب.",
+    "لا تنتظر الدافع. ابدأ بحركة صغيرة والدافع يلحقك.",
+    "حين تفشل، صغّر الخطوة بدل ما تتخلى عن الطريق.",
+    "المطلوب منك اليوم بسيط: افعل الشي الصغير الصح، ولا تحاول تكون مثالياً.",
+    "بيئتك تقرر أكثر مما تقرر إرادتك. غيّر مكان الجوال وغيّر نتيجتك.",
+    "كل عادة تبدأ بإشارة. اعرف إشارتك وتحكّم فيها بدل ما تحاربها بالإرادة.",
+    "التقدم البطيء يبقى تقدماً. المهم تتحرك للأمام ولو خطوة.",
+    "لا تحتفل بالنتيجة فقط، احتفل بالحضور: أنك جيت اليوم وسجّلت.",
+    "ما تحتاج تكون أفضل من غيرك، يكفي تكون أفضل من نفسك أمس.",
+    "اجعل نجاح اليوم يسيراً بحيث ما تقدر تقول لا."
+  ]);
+  g("من وحي «قوة العادات»", [
+    "لا تحاول تمسح عادة سيئة، بدّل روتينها: نفس الإشارة، وفعل ثاني يعطيك نفس الراحة.",
+    "افهم ماذا تبحث عنه عادتك: راحة؟ هروب؟ ملل؟ عندها تعرف البديل المناسب.",
+    "عادة واحدة محورية، كالتمرين، تجرّ وراءها عادات كثيرة تتحسن معها.",
+    "إذا أحسست بالرغبة، قل لنفسك: هذي موجة وبتعدّي. غيّر مكانك وانتظرها.",
+    "الإيمان بأنك تقدر يتكوّن مع الأيام المتتابعة، فاستمر لين يصير الإيمان حقيقة.",
+    "قد تفشل وقت الضغط، فجهّز خطتك قبل لحظة الضغط لا أثناءها.",
+    "العادات تُبنى بالتكرار لا بالقرار. كرّر لين تتعب العادة من مقاومتك.",
+    "أي لحظة تحس فيها بالتوتر، حضّر ردّ فعل بديل: مشي، ماء، اتصال بصديق."
+  ]);
+  g("من وحي «العمل العميق»", [
+    "ساعة تركيز كاملة بلا جوال تساوي ثلاث ساعات تشتت.",
+    "التركيز مهارة تتدرب عليها مثل العضلة، فابدأ بخمس وعشرين دقيقة اليوم.",
+    "كل إشعار يسرق منك أكثر من وقته. اقفل الإشعارات وخذ وقتك لنفسك.",
+    "الملل ليس عدواً، هو تمرين للتحمل. لا تهرب منه لأول فرصة.",
+    "حدّد وقتاً للدراسة قبل ما يبدأ اليوم، لا بعد ما تحس إنك فاضي.",
+    "ما تقدر تنجز شيئاً عظيماً وأنت مشتّت بين ألف شاشة. اختر شاشة واحدة وركّز."
+  ]);
+  g("من وحي «لا يمكن إيذائي»", [
+    "حين يقول عقلك كفى، فأنت غالباً لم تستهلك إلا جزءاً من طاقتك. جرّب دقيقة زيادة.",
+    "اعمل الشي الصعب كل يوم، فيتصلّب عقلك مثل جلد اليد المتصلّب.",
+    "ما أحد بيجي ينقذك. أنت الشخص اللي بتقوم لنفسك.",
+    "الراحة المطلقة تصنع إنساناً ضعيفاً. اختر تعباً يبنيك.",
+    "قارن نفسك بنسختك الأضعف، مو بالآخرين.",
+    "خذ كل فشل كمعلّم، واكتب درسه، ثم قم.",
+    "الانضباط يعني تسوي الشي لما ما تحس بالرغبة فيه.",
+    "كل مرة تغلب فيها كسلك، تدرّب عضلة الإرادة."
+  ]);
+  g("من وحي «الإنسان يبحث عن المعنى»", [
+    "بين المثير والاستجابة مساحة. في هذي المساحة تكمن حريتك.",
+    "من عنده «لماذا» يتحمل أي «كيف». اكتب سببك وارجع له كل ما ضعفت.",
+    "ما تقدر تتحكم بكل اللي يصير لك، لكن تقدر تتحكم كيف ترد.",
+    "المعنى يخفف الألم. ضع لرحلتك معنى، وراح تصبر عليها.",
+    "المعاناة تعلّمك شو يستاهل تقاتل لأجله.",
+    "الحياة تسألك كل يوم: شو راح تفعل الآن؟ وجوابك هو حياتك."
+  ]);
+  g("من وحي الفلسفة الرواقية", [
+    "أول ما تصحى قل لنفسك: اليوم بتعب وبواجه صعوبات، وبتعامل معها بهدوء.",
+    "العائق في الطريق قد يكون هو الطريق نفسه.",
+    "لا تضيّع ما تبقى من عمرك في التفكير بما يفعله الآخرون.",
+    "إن كان الأمر صعباً عليك فلا تظنه مستحيلاً على الإنسان.",
+    "كثير من القلق مصدره الخيال لا الواقع. عُد للمهمة التي بين يديك الآن.",
+    "الوقت أغلى ما تملك، وسنينك تضيع قطرة قطرة وأنت تنشغل بالتافه.",
+    "لا تؤجل الحياة إلى الغد. الغد وعد، واليوم هو الواقع.",
+    "قبل أن تكره نفسك على فشل، اسأل: ماذا كنت أحتاج لأتجاوز اللحظة؟",
+    "ركّز على ما بيدك: أفعالك وقراراتك. أما الباقي فسلّمه وارتح.",
+    "من يتحكم برغباته يملك حرية لا يملكها ملك.",
+    "اصنع لنفسك قاعدة وطبّقها حتى في الأيام التي لا تريد فيها.",
+    "اختر شخصاً تحترمه وتخيّل أنه يراك، فتتصرف بما يليق.",
+    "الغضب والتسويف يأخذان منك أكثر مما يستحقان. احسب كلفتهما.",
+    "القوة الحقيقية أن تقول لنفسك لا، لما تقول لك نعم على شي يضرك.",
+    "افعل اليوم ما تشكر نفسك عليه غداً.",
+    "لا تحتج على الصعوبة، استخدمها كحجر تتدرّب عليه.",
+    "لا يحتاج الإنسان كثيراً ليكون مرتاحاً، يحتاج أن يعيش وفق مبادئه.",
+    "كل مساء راجع يومك بهدوء: ماذا أنجزت؟ ماذا أحسّن غداً؟ بلا قسوة."
+  ]);
+  g("من وحي كتب العقلية والمثابرة", [
+    "ما فشلت بعد، أنت لم تصل بعد. كلمة «بعد» تغيّر كل شي.",
+    "المهارة تُبنى بالجهد، وليست هبة تُمنح لقلة من الناس.",
+    "الموهبة تبدأ الطريق، والمثابرة هي التي تصل بك إلى آخره.",
+    "اللي يصل مو الأذكى، هو اللي استمر لمّا غيره توقف.",
+    "الفشل بيانات لا حكم. اقرأها وعدّل المسار.",
+    "الشغف يتكوّن بالاستمرار، فلا تنتظر أن تحب العمل قبل أن تبدأه.",
+    "مرحلة الصعوبة علامة نمو، فلا تتوقف عندها.",
+    "قل: أنا أتعلم، بدل: أنا ما أقدر.",
+    "اللي يتدرب كل يوم ولو قليلاً يتفوق على اللي يتدرب كثيراً مرة وينسى.",
+    "ما تحتاج تكون جاهزاً لتبدأ، تحتاج أن تبدأ لتصير جاهزاً."
+  ]);
+  g("من وحي كتب الإنتاجية والتركيز", [
+    "ابدأ يومك بإنجاز صغير: رتّب سريرك، فتبدأ سلسلة إنجازات.",
+    "ابدأ بأصعب مهمة في يومك، وبقية اليوم يصير أسهل.",
+    "قلّل المهم إلى ثلاثة أشياء، وأتقنها بدل أن تتشتت بعشرين.",
+    "قل «لا» لما لا يخدم هدفك، لتقول «نعم» لما يبنيك.",
+    "ما تقدر تسوي كل شي، فسوِّ الأهم بإتقان.",
+    "الانضباط الصغير في تفاصيل يومك يمهّد لانتصارات كبيرة.",
+    "رتّب غرفتك ورتّب مكتبك، الترتيب الخارجي يهدّئ الداخل.",
+    "خطّط من الليل لما ستفعله غداً، فتستيقظ وأنت تعرف بالضبط ما عليك.",
+    "نفّذ المهمة الأولى قبل أن تفتح الجوال.",
+    "جزّئ المهمة الكبيرة إلى خطوات صغيرة، واعمل خطوة واحدة فقط الآن."
+  ]);
+  g("من وحي كتب الإرادة وضبط النفس", [
+    "الإرادة مثل بطارية، فاحمِها: نم جيداً، كُل جيداً، وابتعد عن المثيرات.",
+    "لا تعتمد على الإرادة وحدها أمام المغريات، أبعدها عن متناول يدك.",
+    "التعب والجوع والسهر يضعفون قرارك. اعتنِ بجسمك لتتحكم بعقلك.",
+    "قرار صغير تأخذه الآن يريحك من معركة كبيرة لاحقاً.",
+    "حدّد قاعدة مسبقة: إذا حصل كذا، أسوي كذا. وما تفاوض نفسك بعدها.",
+    "الصبر على لحظة الرغبة عشر دقائق يغيّر قصة اليوم كله."
+  ]);
+  g("من وحي ثقافة الرياضة والتمرين", [
+    "جسمك يبني ثقتك بنفسك: كل تمرين تلتزم به يعلّمك أنك تقدر.",
+    "التمرين ليس عقوبة، إنه هدية تقدمها لنفسك.",
+    "الجسد القوي يعين العقل على الثبات، فتحرك اليوم.",
+    "لا تنتظر الشعور بالجاهزية، البس ملابس الرياضة وابدأ بالتسخين.",
+    "العضلات تُبنى بالراحة والغذاء كما تُبنى بالتمرين. اعتنِ بالثلاثة.",
+    "في اليوم الثقيل أكمل ولو بنصف الجهد، فهذا اللي يصنع الفرق.",
+    "ثقتك بنفسك تتكوّن من وعود صغيرة تلتزم بها.",
+    "ما في اختصارات. الصبر هو الاختصار الوحيد.",
+    "ركّز على الأداء اليوم، والشكل يلحقه بعد أسابيع.",
+    "الراحة جزء من الخطة، لكنها ليست مبرراً للانقطاع.",
+    "خطوة اليوم، وإن كانت صغيرة، تُحسب أمام شخصك المستقبلي.",
+    "تعبك اليوم يصير قوتك بكرة."
+  ]);
+  g("من وحي أبحاث التعلّم", [
+    "ادرس ثلاثين دقيقة بتركيز كامل، أفضل من ثلاث ساعات بين الجوال والكتاب.",
+    "ابدأ بأصعب مادة وأنت نشيط، وأخّر الأسهل لآخر اليوم.",
+    "اختبر نفسك بدل ما تعيد القراءة فقط، فالاسترجاع هو اللي يثبّت المعلومة.",
+    "المراجعة المنتظمة أقوى من السهر قبل الامتحان.",
+    "اكتب بيدك ما تتعلمه، فالتدوين يثبّت الفهم.",
+    "حين تتكاسل عن الدراسة، افتح الكتاب لدقيقتين فقط وشوف ماذا يحدث.",
+    "العلم يُبنى حجراً فوق حجر، فلا تستصغر صفحة واحدة.",
+    "اجعل مكان دراستك للدراسة فقط، فيتعلم عقلك أن هذا المكان للتركيز.",
+    "ضع الجوال خارج الغرفة، ثم قارن عدد الصفحات التي أنهيتها.",
+    "ما يهم هو الاستمرار الأسبوعي، لا حماس ليلة واحدة."
+  ]);
+  g("حكمة عامة", [
+    "الانزلاق لا يعني أنك رجعت للصفر. الأيام السابقة ما تنمحي.",
+    "حاسب العادة لا نفسك. اشتغل على الأسباب ولا تجلد ذاتك.",
+    "الندم الشديد يخنقك أكثر مما يصلحك، خذ الدرس وتحرك.",
+    "كل مرة تقوم فيها بعد السقوط، أنت تبني عضلة الرجوع.",
+    "الشخص المنضبط ليس من لا يسقط، بل من يقوم أسرع.",
+    "اكتب ما الذي أوصلك للانزلاق: المكان؟ الوقت؟ الشعور؟ ثم غيّره.",
+    "تعامل مع نفسك كما تتعامل مع صديق تحبه: بصدق ولطف.",
+    "أمس مضى. اليوم صفحة جديدة، والسلسلة تبدأ بخطوة.",
+    "مو لازم تكون كاملاً، المطلوب أن تستمر.",
+    "لا تقارن بدايتك بمنتصف رحلة غيرك.",
+    "إذا ضاق بك الحال، قم، غيّر مكانك، اشرب ماء، وتنفس بعمق.",
+    "أنت لست عادتك. أنت الإنسان الذي يقرر كيف يتغيّر.",
+    "الاعتراف بالمشكلة بصدق نصف الحل. وأنت اعترفت، فأنت في نصف الطريق.",
+    "تمرّ الرغبة كموجة، ركّز على تنفسك حتى تنكسر وتنتهي.",
+    "الصلاة أول عادة تبني عليها باقي عاداتك: ثبّتها وسيترتب يومك حولها.",
+    "الدعاء قوة لا يراها أحد: اطلب العون، ثم قم بما عليك.",
+    "الانضباط أن تختار ما تريده أكثر على ما تشتهيه الآن.",
+    "حين تحس أنك ضعيف، تذكّر لماذا بدأت.",
+    "من يزرع اليوم يحصد غداً، فلا تستعجل الحصاد.",
+    "كل يوم تسجّل فيه هو دليل جديد أن التغيير ممكن."
+  ]);
+  QUOTES.push(["﴿فَإِنَّ مَعَ الْعُسْرِ يُسْرًا﴾", "القرآن الكريم · الشرح"]);
+  QUOTES.push(["﴿لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا﴾", "القرآن الكريم · البقرة ٢٨٦"]);
+  QUOTES.push(["﴿إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِمْ﴾", "القرآن الكريم · الرعد ١١"]);
+  QUOTES.push(["﴿وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا﴾", "القرآن الكريم · العنكبوت ٦٩"]);
+  QUOTES.push(["﴿وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ﴾", "القرآن الكريم · الطلاق ٣"]);
+  QUOTES.push(["﴿قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ﴾", "القرآن الكريم · الزمر ٥٣"]);
+  QUOTES.push(["﴿إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ﴾", "القرآن الكريم · العنكبوت ٤٥"]);
+  QUOTES.push(["﴿فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ﴾", "القرآن الكريم · آل عمران ١٥٩"]);
+  QUOTES.push(["﴿وَسَارِعُوا إِلَىٰ مَغْفِرَةٍ مِّن رَّبِّكُمْ﴾", "القرآن الكريم · آل عمران ١٣٣"]);
+  QUOTES.push(["﴿وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ﴾", "القرآن الكريم · البقرة ٤٥"]);
+  QUOTES.push(["﴿وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ﴾", "القرآن الكريم · النجم ٣٩"]);
+  QUOTES.push(["أحب الأعمال إلى الله أدومها وإن قل.", "حديث شريف · متفق عليه"]);
+  QUOTES.push(["كل ابن آدم خطّاء، وخير الخطّائين التوابون.", "حديث شريف · الترمذي وابن ماجه"]);
+  QUOTES.push(["اتق الله حيثما كنت، وأتبع السيئة الحسنة تمحها.", "حديث شريف · الترمذي"]);
+  QUOTES.push(["المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف، وفي كل خير.", "حديث شريف · مسلم"]);
+  QUOTES.push(["احرص على ما ينفعك واستعن بالله ولا تعجز.", "حديث شريف · مسلم"]);
+  QUOTES.push(["إنما الأعمال بالنيات.", "حديث شريف · متفق عليه"]);
+
+  var QEN = [
+    "You don’t rise to the level of your goals, you fall to the level of your systems. Fix your system before blaming yourself.",
+    "Every check mark is a vote for the person you want to become.",
+    "Getting one percent better each day looks tiny, but over months it adds up to something huge.",
+    "Don’t ask: am I disciplined? Ask: what would a disciplined person do today? Then do that.",
+    "Missed a day? Fine. Missed two? That’s how a new habit forms. Never miss twice.",
+    "Make the right habit the easiest step within reach, and the harmful one a few steps away.",
+    "Start with just two minutes. A small start beats procrastination more than big plans do.",
+    "Motivation comes and goes; a system stays. Build one that doesn’t need a mood.",
+    "Attach your new habit to one you already do: after I do this, I do that.",
+    "Your identity is built from small things you repeat: every time you keep your word, you confirm who you are.",
+    "What you measure improves. Log honestly; the numbers don’t lie.",
+    "Don’t wait for motivation. Make one small move and motivation will catch up.",
+    "When you fail, shrink the step instead of giving up on the road.",
+    "What’s asked of you today is simple: do the small right thing, and don’t try to be perfect.",
+    "Your environment decides more than your willpower does. Move your phone, change your result.",
+    "Every habit starts with a cue. Learn your cue and manage it instead of fighting it with willpower.",
+    "Slow progress is still progress. What matters is moving forward, even one step.",
+    "Don’t only celebrate the result; celebrate showing up: you came today and you logged it.",
+    "You don’t need to be better than others; being better than yesterday’s you is enough.",
+    "Make today’s win so easy that you can’t say no.",
+    "Don’t try to erase a bad habit; swap its routine: same cue, a different action that gives the same relief.",
+    "Understand what your habit is really after: comfort? escape? boredom? Then you’ll know the right replacement.",
+    "One keystone habit, like exercise, pulls many other habits up with it.",
+    "When the urge hits, tell yourself: this is a wave and it will pass. Change your spot and wait it out.",
+    "Belief that you can grows over consecutive days, so keep going until the belief becomes real.",
+    "You may fail under pressure, so prepare your plan before the pressure arrives, not during it.",
+    "Habits are built by repetition, not by decisions. Repeat until the habit gets tired of resisting you.",
+    "Whenever you feel stress, prepare an alternative reaction: a walk, water, a call with a friend.",
+    "One hour of full focus without your phone is worth three hours of distraction.",
+    "Focus is a skill you train like a muscle, so start with twenty-five minutes today.",
+    "Every notification steals more than its own time. Silence them and take your time back.",
+    "Boredom isn’t the enemy; it’s endurance training. Don’t escape it at the first chance.",
+    "Set study time before the day starts, not after you notice you’re free.",
+    "You can’t achieve something great while scattered across a thousand screens. Pick one screen and focus.",
+    "When your mind says enough, you’ve usually used only a part of your energy. Try one more minute.",
+    "Do something hard every day, and your mind will toughen like a calloused hand.",
+    "Nobody is coming to rescue you. You are the one who will stand up for yourself.",
+    "Total comfort makes a weak person. Choose the kind of tiredness that builds you.",
+    "Compare yourself to your weaker past self, not to other people.",
+    "Treat every failure as a teacher: write down its lesson, then get up.",
+    "Discipline means doing the thing when you don’t feel like it.",
+    "Every time you beat your laziness, you train the muscle of willpower.",
+    "Between stimulus and response there is a space. In that space lies your freedom.",
+    "Whoever has a why can bear almost any how. Write your reason and return to it whenever you weaken.",
+    "You can’t control everything that happens to you, but you can control how you respond.",
+    "Meaning eases pain. Give your journey a meaning and you’ll endure it.",
+    "Suffering teaches you what is worth fighting for.",
+    "Life asks you every day: what will you do now? Your answer is your life.",
+    "When you wake up, tell yourself: today I’ll be tired and face difficulties, and I’ll handle them calmly.",
+    "The obstacle in the path may be the path itself.",
+    "Don’t waste what’s left of your life thinking about what others are doing.",
+    "If something is hard for you, don’t assume it’s impossible for a human being.",
+    "Much anxiety comes from imagination, not reality. Come back to the task in your hands right now.",
+    "Time is the most precious thing you own, and years slip away drop by drop while you busy yourself with trivia.",
+    "Don’t postpone living until tomorrow. Tomorrow is a promise; today is the reality.",
+    "Before you hate yourself for a failure, ask: what did I need to get through that moment?",
+    "Focus on what’s in your hands: your actions and decisions. Hand over the rest and rest.",
+    "Whoever masters their desires has a freedom that no king has.",
+    "Make yourself a rule and keep it even on the days you don’t want to.",
+    "Pick someone you respect and imagine they can see you; you’ll act accordingly.",
+    "Anger and procrastination take more from you than they deserve. Count their cost.",
+    "Real strength is telling yourself no when you say yes to something that harms you.",
+    "Do today what you’ll thank yourself for tomorrow.",
+    "Don’t complain about difficulty; use it as a stone to train on.",
+    "A person doesn’t need much to be at ease; they need to live by their principles.",
+    "Each evening, review your day calmly: what did I accomplish? What will I improve tomorrow? Without harshness.",
+    "You haven’t failed, you just haven’t succeeded yet. The word “yet” changes everything.",
+    "Skill is built through effort; it isn’t a gift handed to a few.",
+    "Talent starts the road, but persistence takes you to the end of it.",
+    "The one who arrives isn’t the smartest, but the one who kept going when others stopped.",
+    "Failure is data, not a verdict. Read it and adjust your course.",
+    "Passion grows through persistence, so don’t wait to love the work before you begin it.",
+    "The hard stage is a sign of growth, so don’t stop there.",
+    "Say: I’m learning, instead of: I can’t.",
+    "Someone who trains a little every day beats someone who trains a lot once and forgets.",
+    "You don’t need to be ready to start; you need to start to become ready.",
+    "Start your day with a small win: make your bed, and a chain of wins begins.",
+    "Start with the hardest task of your day, and the rest of the day gets easier.",
+    "Cut what matters down to three things and master them, instead of scattering across twenty.",
+    "Say “no” to what doesn’t serve your goal so you can say “yes” to what builds you.",
+    "You can’t do everything, so do the most important thing well.",
+    "Small discipline in the details of your day paves the way for big victories.",
+    "Tidy your room and your desk; outer order calms the inner.",
+    "Plan the night before what you’ll do tomorrow, so you wake up knowing exactly what’s on you.",
+    "Do the first task before you open your phone.",
+    "Break the big task into small steps, and do just one step now.",
+    "Willpower is like a battery, so protect it: sleep well, eat well, and stay away from triggers.",
+    "Don’t rely on willpower alone against temptation; put the temptation out of reach.",
+    "Tiredness, hunger and late nights weaken your decisions. Take care of your body to control your mind.",
+    "One small decision made now spares you a big battle later.",
+    "Set a rule ahead of time: if this happens, I do that. And don’t negotiate with yourself afterwards.",
+    "Waiting out a craving for ten minutes can change the story of your whole day.",
+    "Your body builds your self-confidence: every workout you stick to teaches you that you can.",
+    "Exercise isn’t a punishment; it’s a gift you give yourself.",
+    "A strong body helps the mind stay steady, so move today.",
+    "Don’t wait to feel ready; put on your workout clothes and start warming up.",
+    "Muscles are built by rest and food as much as by training. Take care of all three.",
+    "On a heavy day, finish even at half effort. That’s what makes the difference.",
+    "Your self-confidence is built from small promises you keep.",
+    "There are no shortcuts. Patience is the only shortcut.",
+    "Focus on performance today; the look will follow in a few weeks.",
+    "Rest is part of the plan, but it isn’t an excuse to quit.",
+    "Today’s step, however small, counts toward your future self.",
+    "Today’s tiredness becomes tomorrow’s strength.",
+    "Thirty minutes of full focus beats three hours split between your phone and your book.",
+    "Start with the hardest subject while you’re fresh, and leave the easiest for the end of the day.",
+    "Test yourself instead of only rereading; retrieval is what makes information stick.",
+    "Regular review beats cramming the night before the exam.",
+    "Write by hand what you learn; note-taking locks in understanding.",
+    "When you feel lazy about studying, open the book for just two minutes and see what happens.",
+    "Knowledge is built stone by stone, so don’t underestimate a single page.",
+    "Keep your study spot for studying only, so your brain learns that this place means focus.",
+    "Put your phone outside the room, then compare how many pages you finished.",
+    "What matters is weekly consistency, not one night of enthusiasm.",
+    "A slip doesn’t mean you’re back to zero. Your earlier days don’t vanish.",
+    "Hold the habit accountable, not yourself. Work on the causes and don’t beat yourself up.",
+    "Heavy regret chokes you more than it fixes you; take the lesson and move on.",
+    "Every time you get up after a fall, you build the muscle of coming back.",
+    "A disciplined person isn’t someone who never falls, but someone who gets up faster.",
+    "Write down what led to the slip: the place? the time? the feeling? Then change it.",
+    "Treat yourself the way you’d treat a friend you love: honestly and kindly.",
+    "Yesterday is gone. Today is a new page, and the chain starts with one step.",
+    "You don’t have to be perfect; you just have to keep going.",
+    "Don’t compare your beginning to the middle of someone else’s journey.",
+    "When things feel tight, get up, change your spot, drink water, and breathe deeply.",
+    "You are not your habit. You are the person who decides how to change.",
+    "Honestly admitting the problem is half the solution. You’ve admitted it, so you’re halfway there.",
+    "A craving passes like a wave; focus on your breathing until it breaks and ends.",
+    "Prayer is the first habit to build your other habits on: secure it and your day will arrange itself around it.",
+    "Supplication is a strength no one sees: ask for help, then do your part.",
+    "Discipline is choosing what you want most over what you crave right now.",
+    "When you feel weak, remember why you started.",
+    "Whoever plants today harvests tomorrow, so don’t rush the harvest.",
+    "Every day you log is new proof that change is possible.",
+    "Indeed, with hardship comes ease.",
+    "Allah does not burden a soul beyond what it can bear.",
+    "Indeed, Allah does not change the condition of a people until they change what is in themselves.",
+    "And those who strive for Us, We will surely guide them to Our ways.",
+    "And whoever relies upon Allah, then He is sufficient for him.",
+    "Say: O My servants who have transgressed against themselves, do not despair of the mercy of Allah.",
+    "Indeed, prayer prohibits immorality and wrongdoing.",
+    "And when you have decided, then rely upon Allah.",
+    "And hasten to forgiveness from your Lord.",
+    "And seek help through patience and prayer.",
+    "And that there is not for man except that for which he strives.",
+    "The most beloved deeds to Allah are the most consistent, even if small.",
+    "Every son of Adam makes mistakes, and the best of those who make mistakes are those who repent.",
+    "Fear Allah wherever you are, and follow a bad deed with a good one; it will wipe it out.",
+    "The strong believer is better and more beloved to Allah than the weak believer, and there is good in both.",
+    "Strive for what benefits you, seek help from Allah, and do not give up.",
+    "Actions are judged by intentions."
+  ];
+  var SEN = {
+    "من وحي «العادات الذرية»": "Inspired by Atomic Habits",
+    "من وحي «قوة العادات»": "Inspired by The Power of Habit",
+    "من وحي «العمل العميق»": "Inspired by Deep Work",
+    "من وحي «لا يمكن إيذائي»": "Inspired by Can’t Hurt Me",
+    "من وحي «الإنسان يبحث عن المعنى»": "Inspired by Man’s Search for Meaning",
+    "من وحي الفلسفة الرواقية": "Inspired by Stoic philosophy",
+    "من وحي كتب العقلية والمثابرة": "Inspired by books on mindset and grit",
+    "من وحي كتب الإنتاجية والتركيز": "Inspired by books on productivity and focus",
+    "من وحي كتب الإرادة وضبط النفس": "Inspired by books on willpower and self-control",
+    "من وحي ثقافة الرياضة والتمرين": "Inspired by fitness culture",
+    "من وحي أبحاث التعلّم": "Inspired by learning research",
+    "حكمة عامة": "General wisdom",
+    "القرآن الكريم · الشرح": "Quran · Ash-Sharh 94:5",
+    "القرآن الكريم · البقرة ٢٨٦": "Quran · Al-Baqarah 2:286",
+    "القرآن الكريم · الرعد ١١": "Quran · Ar-Ra’d 13:11",
+    "القرآن الكريم · العنكبوت ٦٩": "Quran · Al-Ankabut 29:69",
+    "القرآن الكريم · الطلاق ٣": "Quran · At-Talaq 65:3",
+    "القرآن الكريم · الزمر ٥٣": "Quran · Az-Zumar 39:53",
+    "القرآن الكريم · العنكبوت ٤٥": "Quran · Al-Ankabut 29:45",
+    "القرآن الكريم · آل عمران ١٥٩": "Quran · Al Imran 3:159",
+    "القرآن الكريم · آل عمران ١٣٣": "Quran · Al Imran 3:133",
+    "القرآن الكريم · البقرة ٤٥": "Quran · Al-Baqarah 2:45",
+    "القرآن الكريم · النجم ٣٩": "Quran · An-Najm 53:39",
+    "حديث شريف · متفق عليه": "Hadith · Bukhari & Muslim",
+    "حديث شريف · الترمذي وابن ماجه": "Hadith · Tirmidhi & Ibn Majah",
+    "حديث شريف · الترمذي": "Hadith · Tirmidhi",
+    "حديث شريف · مسلم": "Hadith · Muslim"
+  };
+  /* ---------- النصوص (عربي / English) ---------- */
+  var T = {
+    title: ["متعقب العادات", "Habit Tracker"],
+    tab_track: ["العادات", "Habits"], tab_stats: ["الإحصائيات", "Stats"],
+    aria_tabs: ["الصفحات", "Pages"], hero_aria: ["جملة اليوم", "Quote of the day"],
+    new_quote: ["جملة جديدة", "New quote"],
+    theme_dark: ["التبديل للمود الليلي", "Switch to dark mode"], theme_light: ["التبديل للمود النهاري", "Switch to light mode"],
+    name_edit_aria: ["تعديل الاسم", "Edit name"], name_none: ["اسمك", "Your name"], name_input_aria: ["اسمك أو لقبك", "Your name or nickname"],
+    w_title: ["أهلاً فيك 👋", "Welcome 👋"],
+    w_p: ["رتّب عاداتك، سجّل يومك، وشوف نسبك. ما في تسجيل حساب: بياناتك تبقى داخل متصفحك أنت فقط، وما حد يشوفها.", "Organize your habits, log your day and watch your numbers. There is no account: your data stays inside your own browser and nobody else can see it."],
+    w_name_lbl: ["شو اسمك أو لقبك؟", "What’s your name or nickname?"], w_name_ph: ["مثلاً: الانضباطي سامي", "e.g. Disciplined Sam"],
+    w_habits_lbl: ["اختر عاداتك (ابدأ بثلاث بس)", "Pick your habits (start with just three)"],
+    w_custom_ph: ["عادة ثانية تبيها", "Another habit you want"], w_add: ["أضف", "Add"],
+    w_start: ["ابدأ رحلتي", "Start my journey"],
+    w_hint: ["اكتب اسمك واختر عادة وحدة على الأقل ليتفعّل الزر.", "Enter your name and pick at least one habit to enable the button."],
+    d_today: ["اليوم", "Today"], d_week: ["الأسبوع", "Week"], d_month: ["الشهر", "Month"], d_year: ["السنة", "Year"],
+    d_this_week: ["هذا الأسبوع", "This week"], d_this_month: ["هذا الشهر", "This month"], d_this_year: ["هذه السنة", "This year"],
+    d_last_week: ["الأسبوع الماضي", "Last week"], d_last_month: ["الشهر الماضي", "Last month"], d_since: ["منذ البداية", "Since start"],
+    d_all: ["الكل", "All"],
+    basis_aria: ["طريقة الحساب", "Calculation mode"], basis_sofar: ["حتى اليوم", "So far"], basis_full: ["الفترة كاملة", "Full period"],
+    basis_note_sofar: ["حتى اليوم: تُحسب الأيام اللي مرّت فقط.", "So far: only days that have passed are counted."],
+    basis_note_full: ["الفترة كاملة: تُحسب كل أيام الأسبوع والشهر والسنة، حتى الأيام اللي لسا ما جت.", "Full period: every day of the week, month and year is counted, even days still to come."],
+    basis_note_tail: [" الأيام اللي قبل ما تضيف العادة، وأيام الراحة والتجميد والإيقاف ما تنحسب عليك.", " Days before you added a habit, plus rest, frozen and paused days, are never counted against you."],
+    cap_none: ["لا بيانات بعد", "No data yet"], cap_of: ["{c} من {p}", "{c} of {p}"],
+    prev_week: ["الأسبوع السابق", "Previous week"], next_week: ["التالي", "Next"],
+    add_ph: ["اسم عادة جديدة", "New habit name"], add_btn: ["أضف عادة", "Add habit"],
+    t_build: ["عادة أبنيها", "Build a habit"], t_quit: ["عادة أقلع عنها", "Quit a habit"], t_count: ["عدّاد يومي", "Daily counter"],
+    t_aria: ["نوع العادة", "Habit type"], target_ph: ["الهدف اليومي (مثلاً 8)", "Daily target (e.g. 8)"],
+    edit_habits: ["تعديل العادات", "Edit habits"], done: ["تم", "Done"],
+    rule: ["<b>القاعدة:</b> إذا فوّتَّ يوماً، عادي. المهم ما تفوّت مرتين ورا بعض. اضغط على اسم أي عادة لتفتح تفاصيلها.", "<b>The rule:</b> missing a day is fine. Just never miss twice in a row. Tap a habit’s name to open its details."],
+    no_habits: ["ما عندك عادات بعد", "No habits yet"], no_habits_sub: ["اكتب اسم عادة بالأسفل واضغط «أضف عادة».", "Type a habit below and press “Add habit”."],
+    mot_btn: ["تحفيز", "Motivation"], mot_add: ["أضف تحفيز", "Add motivation"], mot_hide: ["إخفاء", "Hide"],
+    why_prefix: ["سببك: ", "Your reason: "],
+    streak: ["سلسلة", "streak"], clean: ["نظيف", "clean"],
+    nudge_all: ["كل عادات اليوم تمّت. أحسنت، كمّل بكرة.", "Everything for today is done. Well done, keep going tomorrow."],
+    nudge_rest: ["اليوم يوم راحة لعاداتك. استمتع فيه.", "Today is a rest day for your habits. Enjoy it."],
+    nudge_missed: ["فوّتَّ أمس: <b>{names}</b>. اليوم هو يوم الرجوع، المهم ما تفوّت مرتين.", "You missed yesterday: <b>{names}</b>. Today is the comeback day. Just don’t miss twice."],
+    nudge_left: ["باقي لك اليوم {r} من {n}. ابدأ بأسهلها.", "{r} of {n} left today. Start with the easiest one."],
+    nudge_restart: ["رجعة بدون جلد ذات: مرّت {d} أيام على آخر مرة في <b>{name}</b>. ما انتهى شي. ابدأ بنسخة مصغّرة منها، دقيقتين فقط، وسجّلها.", "A no-guilt restart: it’s been {d} days since your last <b>{name}</b>. Nothing is lost. Start with a tiny version, just two minutes, and log it."],
+    nudge_slip: ["الانزلاق في <b>{name}</b> ما يمسح تقدمك. اكتب شو حصل بالملاحظة، غيّر الظرف، وكمّل من اليوم.", "A slip on <b>{name}</b> doesn’t erase your progress. Note what happened, change the circumstances and carry on from today."],
+    toast_ms: ["🔥 {n} يوم متتالي على «{name}»! استمر!", "🔥 {n} days in a row on “{name}”! Keep going!"],
+    toast_ms_q: ["🌟 {n} يوم نظيف على «{name}»! فخور فيك.", "🌟 {n} clean days on “{name}”! Proud of you."],
+    toast_quota: ["انتهت تجميدات هذا الشهر لهذه العادة.", "No freezes left this month for this habit."],
+    toast_future: ["ما تقدر تجمّد يوماً لسا ما جا.", "You can’t freeze a day that hasn’t come yet."],
+    toast_done: ["اليوم المُنجز ما يحتاج تجميد.", "A completed day doesn’t need a freeze."],
+    p_added: ["وقت إضافتها", "Added on"], p_since: ["منذ الإضافة", "Since added"], p_days_done: ["أيام الإنجاز", "Days done"],
+    p_streak: ["السلسلة الحالية", "Current streak"], p_best: ["أفضل سلسلة", "Best streak"],
+    p_streak_q: ["أيام نظيفة متتالية", "Clean days in a row"], p_best_q: ["أفضل فترة نظيفة", "Best clean run"],
+    p_days_unit: ["{n} يوم", "{n} d"], before_feature: ["قبل تفعيل هذه الميزة", "Before this feature"],
+    p_sched: ["أيام العادة", "Habit days"], p_all: ["كل الأيام", "Every day"],
+    p_sched_hint: ["الأيام المحددة هي أيام العادة، وباقي الأيام راحة ما تنحسب عليك.", "Selected days are the habit’s days; the rest are rest days that aren’t counted against you."],
+    p_target: ["الهدف اليومي", "Daily target"], p_count_day: ["عدّاد هذا اليوم", "Counter for this day"],
+    p_day_tools: ["اختر يوماً", "Pick a day"], p_note: ["ملاحظة هذا اليوم", "Note for this day"], p_note_ph: ["شو صار؟ شو حسّيت؟", "What happened? How did you feel?"],
+    p_freeze: ["تجميد هذا اليوم", "Freeze this day"], p_unfreeze: ["إلغاء التجميد", "Remove freeze"],
+    p_freeze_left: ["متبقي لك {n} تجميد هذا الشهر. التجميد يحمي سلسلتك ويستثني اليوم من النسبة.", "{n} freezes left this month. A freeze protects your streak and excludes the day from your rate."],
+    p_why: ["ليش بدي هالعادة؟", "Why do I want this habit?"], p_why_ph: ["اكتب سببك الحقيقي، بكلامك", "Write your real reason, in your own words"],
+    p_mot: ["جملة تحفيز أذكّر فيها نفسي", "A motivation line to remind myself"], p_mot_ph: ["جملة قصيرة تشدّك لما تتكاسل", "A short line that pulls you in when you slack"],
+    p_hint: ["جملة التحفيز والسبب يظهران لك بزر اختياري لما ما تسجّل العادة اليوم.", "Your motivation line and reason appear behind an optional button when you haven’t logged the habit today."],
+    p_pause: ["إيقاف مؤقت", "Pause"], p_resume: ["استئناف", "Resume"], p_archive: ["أرشفة", "Archive"],
+    p_paused_note: ["العادة متوقفة: أيام الإيقاف ما تنحسب وما تكسر السلسلة.", "Habit paused: paused days aren’t counted and don’t break your streak."],
+    p_recent: ["آخر الملاحظات", "Recent notes"],
+    s_title: ["الإعدادات والنسخ الاحتياطي", "Settings & backup"],
+    s_rel: ["إظهار الآيات والأحاديث ضمن جمل التحفيز", "Show Quran verses and hadith in the quotes"],
+    s_ws: ["بداية الأسبوع", "Week starts on"],
+    s_archived: ["العادات المؤرشفة", "Archived habits"], s_none_arch: ["لا توجد عادات مؤرشفة.", "No archived habits."],
+    s_restore: ["استرجاع", "Restore"], s_delete: ["حذف نهائي", "Delete forever"],
+    s_backup_hint: ["بياناتك محفوظة داخل المتصفح لكل رابط على حدة. إذا فتحت نسخة ثانية من الصفحة أو غيّرت الجهاز، انقل بياناتك من هنا.", "Your data lives inside the browser, separately for each link. If you open another copy of the page or switch device, move your data from here."],
+    s_export: ["تجهيز النسخة", "Prepare backup"], s_import: ["استيراد من النص", "Import from text"], s_csv: ["تصدير CSV", "Export CSV"],
+    s_bk_ph: ["اضغط «تجهيز النسخة» وانسخ النص كله، أو الصق هنا نسخة سابقة ثم اضغط «استيراد».", "Press “Prepare backup” and copy all the text, or paste an earlier backup here and press “Import”."],
+    s_bk_aria: ["نص النسخة الاحتياطية", "Backup text"],
+    msg_export: ["انسخ النص كله وخزّنه (ملاحظات أو رسالة لنفسك). للنقل: افتح الصفحة الجديدة، الصقه هنا واضغط «استيراد».", "Copy all the text and keep it somewhere safe. To move: open the new page, paste it here and press “Import”."],
+    msg_csv: ["هذا ملف CSV. انسخه والصقه في Excel أو Google Sheets.", "This is a CSV. Copy it and paste it into Excel or Google Sheets."],
+    msg_empty: ["الصق نص النسخة الاحتياطية أولاً.", "Paste the backup text first."],
+    msg_bad1: ["النص غير صالح: ما يشبه نسخة من هذا المتعقب.", "Invalid text: it doesn’t look like a backup of this tracker."],
+    msg_bad2: ["النص غير صالح: تأكد أنك نسخته كاملاً.", "Invalid text: make sure you copied all of it."],
+    msg_ok: ["تم الاستيراد بنجاح.", "Imported successfully."],
+    reset: ["مسح كل البيانات", "Erase all data"], reset_confirm: ["اضغط مرة ثانية للتأكيد", "Press again to confirm"],
+    note: ["بياناتك محفوظة داخل متصفحك فقط، وما حد غيرك يشوفها.", "Your data is stored only in your browser; nobody else can see it."],
+    credit: ["صُنع بجهد وحب بواسطة <b>جاد</b> و<b>كلاود</b>", "Built with effort and love by <b>Jad</b> and <b>Claude</b>"],
+    rights: ["© 2026 · جميع الحقوق محفوظة", "© 2026 · All rights reserved"],
+    ver: ["الإصدار 6 · تحديث 10 أكتوبر 2026", "Version 6 · Updated Oct 10, 2026"],
+    st_main: ["النسب الرئيسية", "Main rates"], st_second: ["نسب ثانوية", "Secondary rates"],
+    st_week: ["أيام الأسبوع", "Days of the week"],
+    st_best: ["أقوى يوم: {d} ({p})", "Strongest day: {d} ({p})"], st_weak: ["أضعف يوم: {d} ({p})", "Weakest day: {d} ({p})"],
+    st_wd_none: ["ما فيه بيانات كافية بعد.", "Not enough data yet."],
+    st_heat: ["خريطة الإنجاز", "Consistency map"], hm_3: ["٣ أشهر", "3 months"], hm_6: ["٦ أشهر", "6 months"], hm_12: ["سنة", "1 year"],
+    hm_hint: ["مربع ملوّن = إنجاز، أحمر باهت = يوم فاتك، مخطّط = راحة.", "Colored = done, faint red = missed, hatched = rest."],
+    st_per: ["حسب كل عادة", "By habit"], st_per_hint: ["الرقم تحت كل دائرة: أيام الإنجاز / الأيام المحسوبة.", "The number under each ring: days done / days counted."],
+    added: ["أُضيفت: {d}", "Added: {d}"], added_unknown: ["قبل تفعيل تسجيل التاريخ", "Before date tracking"],
+    st_line: ["سلسلة {a} · أفضل {b}", "Streak {a} · Best {b}"], st_line_q: ["نظيف {a} · أفضل {b}", "Clean {a} · Best {b}"],
+    st_empty: ["أضف عادة من صفحة العادات وبتظهر لك النسب هنا.", "Add a habit on the Habits page and your rates will show up here."],
+    hs_done: ["تم", "Done"], hs_missed: ["فاتت", "Missed"], hs_rest: ["راحة", "Rest"], hs_frozen: ["مجمّدة", "Frozen"], hs_slip: ["انزلاق", "Slip"]
+  };
+
+  Object.assign(T, {
+    tab_sleep: ["النوم", "Sleep"],
+    optional: ["اختياري", "optional"],
+    hset_btn: ["إعدادات", "Settings"], hset_close: ["إغلاق الإعدادات", "Close settings"],
+    mot_empty: ["ما كتبت سبباً ولا جملة تحفيز بعد. افتح الإعدادات واكتبهم.", "You haven’t written a reason or a motivation line yet. Open Settings and add them."],
+    cue_prefix: ["الإشارة: ", "Cue: "],
+    p_cue: ["الإشارة (بعد ما أسوي…)", "Cue (after I…)"], p_cue_ph: ["مثلاً: بعد ما أصلي الفجر", "e.g. right after I pray Fajr"],
+    confirm_del: ["تأكيد الحذف", "Confirm delete"],
+    t_prayers: ["الصلوات (كل صلاة بخانة)", "Prayers (a box for each)"], t_water: ["شرب الماء (أكواب)", "Water (cups)"],
+    t_meds: ["الدواء (جرعات)", "Medication (doses)"], t_multi: ["مرات متعددة باليوم", "Several times a day"],
+    target_ph: ["عدد الخانات (مثلاً 8)", "Number of boxes (e.g. 8)"],
+    def_prayers: ["الصلوات", "Prayers"], def_water: ["شرب الماء", "Drink water"], def_meds: ["الدواء", "Medication"], def_multi: ["عادة متعددة", "Multi-step habit"],
+    u_cup: ["كوب", "Cup"], u_dose: ["جرعة", "Dose"], u_time: ["مرة", "Time"],
+    p_slots: ["الخانات", "Boxes"], p_slots_n: ["عدد الخانات", "Number of boxes"],
+    p_slots_opt: ["اضغط على خانة لتحويلها بين إلزامية (داكنة) واختيارية.", "Tap a box to switch it between required (dark) and optional."],
+    p_hint: ["السبب وجملة التحفيز والإشارة تظهر لك لما تضغط على اسم العادة.", "Your reason, motivation line and cue show up when you tap the habit’s name."],
+    rule: ["<b>القاعدة:</b> إذا فوّتَّ يوماً، عادي. المهم ما تفوّت مرتين ورا بعض. اضغط على اسم أي عادة لتشوف تحفيزك، ومنها تفتح إعدادات العادة.", "<b>The rule:</b> missing a day is fine. Just never miss twice in a row. Tap a habit’s name to see your motivation; its settings open from there."],
+    ver: ["الإصدار 7 · تحديث 10 أكتوبر 2026", "Version 7 · Updated Oct 10, 2026"],
+    wr_title: ["مراجعة الأسبوع", "Weekly review"], wr_hint: ["خمس دقائق تغيّر الأسبوع الجاي.", "Five minutes that change next week."],
+    wr_q1: ["شو نجح معي هالأسبوع؟", "What worked for me this week?"], wr_q2: ["شو بغيّر الأسبوع الجاي؟", "What will I do differently next week?"],
+    wr_past: ["مراجعات سابقة", "Past reviews"], wr_for: ["أسبوع {d}", "Week of {d}"],
+    sl_title: ["سجّل ليلتك", "Log your night"],
+    sl_date: ["تاريخ الاستيقاظ (صباح الليلة اللي تسجلها)", "Wake-up date (the morning after the night you’re logging)"],
+    sl_bed: ["وقت النوم", "Bedtime"], sl_wake: ["وقت الاستيقاظ", "Wake time"], sl_quality: ["كيف حسّيت صباحاً؟", "How did you feel in the morning?"],
+    sl_note_ph: ["ملاحظة (اختياري)", "Note (optional)"], sl_save: ["حفظ الليلة", "Save night"], sl_delete: ["حذف الليلة", "Delete night"],
+    sl_saved: ["تم حفظ الليلة ✔", "Night saved ✔"], sl_deleted: ["تم حذف الليلة.", "Night deleted."],
+    sl_live: ["نمت {h} س {m} د · {rel} · الدرجة {s}/4", "Slept {h} h {m} min · {rel} · score {s}/4"],
+    sl_rel_early: ["قبل هدفك بـ {n} د", "{n} min before your target"], sl_rel_on: ["على هدفك", "right on target"], sl_rel_late: ["بعد هدفك بـ {n} د", "{n} min after your target"],
+    sl_year: ["عدّاد السنة", "Year counter"],
+    sl_year_logged: ["{n} ليلة مسجلة من {t}", "{n} nights logged out of {t}"], sl_year_good: ["{n} ليلة جيدة", "{n} good nights"],
+    sl_streak: ["سلسلة نوم بدري: {n} ليلة", "Early-sleep streak: {n} nights"],
+    sl_good_lbl: ["ليالي جيدة", "Good nights"],
+    sl_legend: ["اللون الأغمق = ليلة أفضل (مدة كافية + نوم بدري). الأحمر = ليلة ضعيفة. الرمادي = غير مسجّلة. اضغط على أي مربع لتسجيل أو تعديل ليلته.", "Darker = a better night (enough hours + early bedtime). Red = a poor night. Grey = not logged. Tap any square to log or edit that night."],
+    sl_stats: ["إحصائيات نومك", "Your sleep stats"],
+    sl_avg7: ["آخر 7 ليالٍ", "Last 7 nights"], sl_avg30: ["آخر 30 ليلة", "Last 30 nights"],
+    sl_avg_line: ["متوسط {d} · نوم {b} · استيقاظ {w}", "avg {d} · bed {b} · wake {w}"],
+    sl_none: ["ما فيه ليالٍ مسجّلة بعد.", "No nights logged yet."],
+    sl_bed_rhythm: ["الالتزام بموعد النوم", "Bedtime rhythm"], sl_wake_rhythm: ["الالتزام بموعد الاستيقاظ", "Wake rhythm"],
+    sl_consistency: ["الانتظام", "Consistency"],
+    sl_bed_rhythm_d: ["نسبة الليالي (آخر 30) اللي نمت فيها خلال 15 دقيقة من هدفك أو قبله.", "Share of nights (last 30) you went to bed within 15 minutes of your target or earlier."],
+    sl_wake_rhythm_d: ["نسبة الصباحات اللي صحيت فيها ضمن 30 دقيقة من هدفك.", "Share of mornings you woke within 30 minutes of your target."],
+    sl_consistency_d: ["نسبة الليالي اللي نمت فيها ضمن 30 دقيقة من متوسط موعدك.", "Share of nights you slept within 30 minutes of your average bedtime."],
+    sl_debt: ["دين النوم (آخر 7 أيام)", "Sleep debt (last 7 days)"], sl_hm: ["{h} س {m} د", "{h} h {m} min"],
+    sl_weekday: ["متوسط ساعات النوم حسب اليوم", "Average sleep by weekday"],
+    sl_goals: ["أهدافك", "Your goals"], sl_goal_h: ["ساعات النوم المطلوبة", "Hours of sleep needed"],
+    sl_goal_bed: ["موعد النوم المستهدف", "Target bedtime"], sl_goal_wake: ["موعد الاستيقاظ المستهدف", "Target wake time"],
+    sl_calc: ["حاسبة موعد النوم", "Bedtime calculator"], sl_calc_wake: ["أبي أصحى الساعة", "I want to wake up at"],
+    sl_calc_out: ["نام الساعة:", "Go to bed at:"], sl_cycles: ["{n} دورات", "{n} cycles"],
+    sl_calc_note: ["تقريبي: الدورة حوالي 90 دقيقة، ومعظم الناس يحتاجون نحو 15 دقيقة ليناموا. الأفضل 5–6 دورات.", "Approximate: a cycle is about 90 minutes and most people need about 15 minutes to fall asleep. Aim for 5–6 cycles."],
+    sl_early_title: ["شو بصير لما تنام بدري؟", "What happens when you sleep early?"],
+    sl_e1: ["تنسجم مع ساعتك البيولوجية (الإيقاع اليومي)، فيسهل عليك النوم والاستيقاظ.", "You line up with your body clock (circadian rhythm), which makes falling asleep and waking up easier."],
+    sl_e2: ["الأهم هو الانتظام: نفس موعد النوم والاستيقاظ حتى بالعطلة يثبّت الساعة البيولوجية.", "Regularity matters most: the same sleep and wake time, even on weekends, keeps your body clock steady."],
+    sl_e3: ["دراسات كبيرة على عشرات الآلاف ربطت النوم المتأخر بمشاكل صحية أكثر، حتى بعد حساب عدد ساعات النوم. هذي ارتباطات وليست إثباتاً للسبب.", "Large studies of tens of thousands of people link late sleep timing with more health problems, even after accounting for sleep duration. These are associations, not proof of cause."],
+    sl_e4: ["في دراسة بريطانية كبيرة كان النوم بين 10 و11 مساءً الأقل ارتباطاً بمخاطر القلب، وارتبط النوم قبل 10 أو بعد 12 بخطر أعلى بنحو 25%. فالمبكر جداً مو بالضرورة أفضل.", "In a large UK study, going to bed between 10 and 11 pm was linked to the lowest heart risk, while bedtimes before 10 or after midnight were linked to roughly 25% higher risk. Very early isn’t automatically better."],
+    sl_e5: ["ربطت أبحاث النوم المتأخر وقلة النوم بتفكير سلبي متكرر أكثر. ارتباط وليس سبباً مؤكداً.", "Research links later bedtimes and shorter sleep with more repetitive negative thinking. An association, not a confirmed cause."],
+    sl_e6: ["ضوء الصباح بعد الاستيقاظ يساعد على ضبط الساعة البيولوجية، فاستيقظ بدري وخلّي الضوء يوصل لعينيك.", "Morning light after waking helps reset the body clock, so get up early and let daylight reach your eyes."],
+    sl_e7: ["عملياً: النوم بدري يعطيك وقتاً لعادات الصباح (الفجر، التمرين، الدراسة) قبل ما يزحمك اليوم. (هذي خلاصتي أنا وليست نتيجة دراسة.)", "In practice: sleeping earlier gives you time for morning habits (Fajr, exercise, study) before the day gets busy. (This is my own takeaway, not a study result.)"],
+    sl_tips_title: ["نصائح لنوم أفضل", "Tips for better sleep"],
+    sl_t1: ["ثبّت موعد الاستيقاظ كل يوم حتى بالعطلة، واحسب موعد نومك منه.", "Fix your wake-up time every day, weekends included, and work out your bedtime from it."],
+    sl_t2: ["اطلع للضوء أول ما تصحى، ولو دقائق.", "Get daylight soon after waking, even for a few minutes."],
+    sl_t3: ["أوقف الكافيين من الظهر تقريباً، فأثره قد يستمر 6–8 ساعات.", "Stop caffeine around midday; its effects can last 6–8 hours."],
+    sl_t4: ["أبعد الشاشات قبل النوم بنصف ساعة إلى ساعة، وخلّي الجوال برا السرير.", "Switch screens off 30–60 minutes before bed and keep your phone out of bed."],
+    sl_t5: ["خلّي الغرفة مظلمة وهادئة وباردة (حوالي 18–20 درجة مئوية).", "Keep the room dark, quiet and cool (about 18–20°C / 65–68°F)."],
+    sl_t6: ["تجنّب الوجبات الدسمة والكحول والتدخين قرب النوم.", "Avoid heavy meals, alcohol and smoking close to bedtime."],
+    sl_t7: ["تحرّك خلال النهار؛ الرياضة المنتظمة تعمّق النوم.", "Be active during the day; regular exercise deepens sleep."],
+    sl_t8: ["إذا ما نمت خلال حوالي 20 دقيقة، قم لشي هادئ وارجع لما تنعس. لا تجبر نفسك.", "If you’re not asleep within about 20 minutes, get up, do something calm and return when sleepy. Don’t force it."],
+    sl_t9: ["خلّي القيلولة قصيرة (أقل من 30 دقيقة) وبالنهار الباكر.", "Keep naps short (under 30 minutes) and early in the afternoon."],
+    sl_t10: ["جهّز روتين تهدئة: استرخاء، تنفس بطيء، دش دافئ، أو اكتب مهام بكرة قبل النوم.", "Build a wind-down routine: relaxing, slow breathing, a warm shower, or jotting down tomorrow’s tasks."],
+    sl_t11: ["البالغون يحتاجون 7 ساعات على الأقل، والمراهقون عادة 8–10.", "Adults need at least 7 hours; teenagers usually 8–10."],
+    sl_disclaimer: ["معلومات عامة وليست نصيحة طبية. إذا استمر الأرق أو التعب رغم التزامك، راجع طبيباً.", "General information, not medical advice. If insomnia or tiredness persists despite good habits, see a doctor."],
+    hs_part: ["جزئي", "Partial"]
+  });
+  /* ---------- الحالة ---------- */
+  var PRAYERS = [["fajr", "الفجر", "Fajr", false], ["duha", "الضحى", "Duha", true], ["dhuhr", "الظهر", "Dhuhr", false],
+    ["asr", "العصر", "Asr", false], ["maghrib", "المغرب", "Maghrib", false], ["isha", "العشاء", "Isha", false]];
+  function makeSlots(kind, n) {
+    if (kind === "prayers") return PRAYERS.map(function (p) { return { k: p[0], o: p[3] }; });
+    var out = [];
+    for (var i = 1; i <= n; i++) out.push({ k: "n" + i, n: String(i), o: false });
+    return out;
+  }
+  function validHM(v) { return typeof v === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(v); }
+  function listMap(m) {
+    var o = {};
+    if (!m || typeof m !== "object" || Array.isArray(m)) return o;
+    for (var k in m) { if (Array.isArray(m[k])) { var a = m[k].filter(function (x) { return typeof x === "string"; }); if (a.length) o[k] = a; } }
+    return o;
+  }
+  function deepMap(m, leaf) {
+    var o = {};
+    if (!m || typeof m !== "object" || Array.isArray(m)) return o;
+    for (var k in m) {
+      var v = m[k];
+      if (!v || typeof v !== "object" || Array.isArray(v)) continue;
+      var r = {}, any = false;
+      for (var id in v) { var x = leaf(v[id]); if (x !== null) { r[id] = x; any = true; } }
+      if (any) o[k] = r;
+    }
+    return o;
+  }
+  function leafStr(x) { return (typeof x === "string" && x) ? x : null; }
+  function leafArr(x) { if (!Array.isArray(x)) return null; var a = x.filter(function (y) { return typeof y === "string"; }); return a.length ? a : null; }
+  function sleepMap(m) {
+    var o = {};
+    if (!m || typeof m !== "object" || Array.isArray(m)) return o;
+    for (var k in m) {
+      var e = m[k];
+      if (e && validHM(e.bed) && validHM(e.wake)) o[k] = { bed: e.bed, wake: e.wake, q: Math.max(0, Math.min(5, parseInt(e.q, 10) || 0)), note: typeof e.note === "string" ? e.note : "" };
+    }
+    return o;
+  }
+
+  function normHabit(h) {
+    if (!h || typeof h.id !== "string" || typeof h.name !== "string") return null;
+    if (typeof h.why !== "string") h.why = "";
+    if (typeof h.motivation !== "string") h.motivation = "";
+    if (typeof h.cue !== "string") h.cue = "";
+    var oldCount = h.type === "count";
+    if (h.type !== "quit" && h.type !== "slots" && !oldCount) h.type = "build";
+    if (oldCount) {
+      h.type = "slots"; h.kind = "multi"; h.unit = "time"; h._migrate = true;
+      h.slots = makeSlots("multi", Math.max(1, Math.min(30, parseInt(h.target, 10) || 1)));
+    }
+    if (h.type === "slots") {
+      if (["prayers", "water", "meds", "multi"].indexOf(h.kind) === -1) h.kind = "multi";
+      if (["cup", "dose", "time"].indexOf(h.unit) === -1) h.unit = h.kind === "water" ? "cup" : (h.kind === "meds" ? "dose" : "time");
+      var ok = Array.isArray(h.slots) ? h.slots.filter(function (s) { return s && typeof s.k === "string"; }).map(function (s) {
+        return { k: s.k, n: typeof s.n === "string" ? s.n : undefined, o: !!s.o };
+      }) : [];
+      h.slots = ok.length ? ok : makeSlots(h.kind, 3);
+    } else { delete h.slots; delete h.kind; delete h.unit; }
+    delete h.target;
+    if (Array.isArray(h.days)) {
+      var seen = {}, out = [];
+      h.days.forEach(function (n) { if (typeof n === "number" && n >= 0 && n <= 6 && !seen[n]) { seen[n] = 1; out.push(n); } });
+      h.days = (out.length === 0 || out.length >= 7) ? null : out;
+    } else h.days = null;
+    h.pauses = Array.isArray(h.pauses) ? h.pauses.filter(function (p) { return p && typeof p.from === "string"; }).map(function (p) { return { from: p.from, to: typeof p.to === "string" ? p.to : null }; }) : [];
+    h.archived = !!h.archived;
+    return h;
+  }
+  function normalize(s) {
+    if (!s || !Array.isArray(s.habits) || !s.log || typeof s.log !== "object") return null;
+    s.habits = s.habits.map(normHabit).filter(Boolean);
+    var oldCounts = s.counts;
+    s.log = listMap(s.log); s.freeze = listMap(s.freeze); s.slips = listMap(s.slips);
+    s.notes = deepMap(s.notes, leafStr); s.sd = deepMap(s.sd, leafArr); s.reviews = deepMap(s.reviews, leafStr);
+    if (oldCounts && typeof oldCounts === "object") {
+      s.habits.forEach(function (h) {
+        if (!h._migrate) return;
+        for (var dk in oldCounts) {
+          var n = oldCounts[dk] && oldCounts[dk][h.id];
+          if (n > 0) { var m = s.sd[dk] || (s.sd[dk] = {}); m[h.id] = h.slots.slice(0, n).map(function (x) { return x.k; }); }
+        }
+      });
+    }
+    s.habits.forEach(function (h) { delete h._migrate; });
+    delete s.counts;
+    s.sleep = sleepMap(s.sleep);
+    if (typeof s.name !== "string" || !s.name.trim()) s.name = DEFAULT_TITLE;
+    if (typeof s.onboarded !== "boolean") s.onboarded = true;
+    if (s.lang !== "en" && s.lang !== "ar") s.lang = "ar";
+    s.ws = (typeof s.ws === "number" && s.ws >= 0 && s.ws <= 6) ? s.ws : 6;
+    s.sleepGoal = (typeof s.sleepGoal === "number" && s.sleepGoal >= 4 && s.sleepGoal <= 12) ? s.sleepGoal : 8;
+    if (!validHM(s.bedTarget)) s.bedTarget = "23:00";
+    if (!validHM(s.wakeTarget)) s.wakeTarget = "07:00";
+    return s;
+  }
+  function detectLang() {
+    try { var l = String(navigator.language || "").toLowerCase(); return l.indexOf("ar") === 0 ? "ar" : "en"; } catch (e) { return "ar"; }
+  }
+  function blankState(lg, keep) {
+    var s = { habits: [], log: {}, sd: {}, notes: {}, freeze: {}, slips: {}, sleep: {}, reviews: {}, name: "", onboarded: false,
+      lang: lg, ws: lg === "ar" ? 6 : 1, sleepGoal: 8, bedTarget: "23:00", wakeTarget: "07:00" };
+    if (keep) for (var k in keep) s[k] = keep[k];
+    return s;
+  }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) { var s = normalize(JSON.parse(raw)); if (s) return s; }
+    } catch (e) {}
+    return blankState(detectLang());
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  var state = load();
+  var ui = { page: "track", expanded: null, setOpen: null, pick: {}, extra: [], sel: {}, hm: 13, toastTimer: null, delArm: null, delTimer: null,
+    sleepDate: null, sleepForm: null, calcWake: null, slMsg: "" };
+  var weekOffset = 0, editMode = false, resetArmed = false, resetTimer = null;
+  var F = {};
+
+  function el(id) { return document.getElementById(id); }
+  function L() { return state.lang === "en" ? 1 : 0; }
+  function t(k, a) {
+    var e = T[k], s = e ? e[L()] : k;
+    if (a) s = s.replace(/\{(\w+)\}/g, function (m, n) { return a[n] !== undefined ? a[n] : m; });
+    return s;
+  }
+  function buildFormatters() {
+    var loc = state.lang === "en" ? "en-US" : "ar-u-nu-latn";
+    F.day = state.lang === "en" ? new Intl.DateTimeFormat(loc, { weekday: "short" })
+      : { format: function (d) { return ["أحد", "إثن", "ثلا", "أرب", "خمي", "جمع", "سبت"][d.getDay()]; } };
+    F.wdLong = new Intl.DateTimeFormat(loc, { weekday: "long" });
+    F.long = new Intl.DateTimeFormat(loc, { weekday: "long", day: "numeric", month: "long" });
+    F.short = new Intl.DateTimeFormat(loc, { day: "numeric", month: "short" });
+    F.full = new Intl.DateTimeFormat(loc, { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit" });
+    F.added = new Intl.DateTimeFormat(loc, { day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit" });
+    F.month = new Intl.DateTimeFormat(loc, { month: "short" });
+    F.monthLong = new Intl.DateTimeFormat(loc, { month: "long", year: "numeric" });
+  }
+  function wdName(wd, long) { var d = new Date(2026, 0, 4 + wd); return (long ? F.wdLong : F.day).format(d); } // 4 يناير 2026 = أحد
+
+  /* ---------- أدوات ---------- */
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function key(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function parseKey(k) { var p = k.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+  function startOfToday() { var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
+  function diffDays(a, b) { return Math.round((a - b) / 86400000); }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; });
+  }
+  function num(n) { return '<span class="num">' + n + "</span>"; }
+  function R1(x) { return Math.round(x * 10) / 10; }
+  function fc(a) { return R1(a.c); }
+  function hcStyle(i) { var p = PALETTE[i % PALETTE.length]; return "--hc:var(" + p[0] + ");--hi:" + p[1]; }
+  function getHabit(id) { for (var i = 0; i < state.habits.length; i++) if (state.habits[i].id === id) return state.habits[i]; return null; }
+  function actives() { return state.habits.filter(function (h) { return !h.archived; }); }
+  function uidN() { uidN.n = (uidN.n || 0) + 1; return uidN.n.toString(36); }
+  function uid() { return "h" + Date.now().toString(36) + Math.floor(Math.random() * 1000).toString(36) + uidN(); }
+
+  function inList(map, dk, id) { var a = map[dk]; return !!a && a.indexOf(id) !== -1; }
+  function setFlag(map, dk, id, on) {
+    var a = map[dk] || [], i = a.indexOf(id);
+    if (on && i === -1) a.push(id); else if (!on && i !== -1) a.splice(i, 1);
+    if (a.length) map[dk] = a; else delete map[dk];
+  }
+  function doneK(dk, id) { return inList(state.log, dk, id); }
+  function done(d, id) { return doneK(key(d), id); }
+  function isSlipK(dk, id) { return inList(state.slips, dk, id); }
+  function isFrozenK(dk, id) { return inList(state.freeze, dk, id); }
+  function setDone(dk, id, on) {
+    setFlag(state.log, dk, id, on);
+    if (on) { setFlag(state.freeze, dk, id, false); setFlag(state.slips, dk, id, false); }
+  }
+  function getNote(dk, id) { var m = state.notes[dk]; return (m && m[id]) || ""; }
+  function setNote(dk, id, v) {
+    var m = state.notes[dk] || {};
+    if (String(v).trim()) m[id] = v; else delete m[id];
+    if (Object.keys(m).length) state.notes[dk] = m; else delete state.notes[dk];
+  }
+
+  /* ---------- الخانات المتعددة ---------- */
+  function reqSlots(h) { return h.slots.filter(function (s) { return !s.o; }); }
+  function slotDone(dk, h, k) { var m = state.sd[dk]; return !!m && !!m[h.id] && m[h.id].indexOf(k) !== -1; }
+  function slotsReqDone(dk, h) { return reqSlots(h).filter(function (s) { return slotDone(dk, h, s.k); }).length; }
+  function slotsTotalDone(dk, h) { return h.slots.filter(function (s) { return slotDone(dk, h, s.k); }).length; }
+  function syncSlotDone(dk, h) { var req = reqSlots(h).length; setDone(dk, h.id, req > 0 && slotsReqDone(dk, h) >= req); }
+  function setSlot(dk, h, k, on) {
+    var m = state.sd[dk] || {}, a = m[h.id] || [], i = a.indexOf(k);
+    if (on && i === -1) a.push(k); else if (!on && i !== -1) a.splice(i, 1);
+    if (a.length) m[h.id] = a; else delete m[h.id];
+    if (Object.keys(m).length) state.sd[dk] = m; else delete state.sd[dk];
+    syncSlotDone(dk, h);
+  }
+  function recomputeSlots(h) { for (var dk in state.sd) { if (state.sd[dk][h.id]) syncSlotDone(dk, h); } }
+  function slotLabel(h, s) {
+    for (var i = 0; i < PRAYERS.length; i++) if (PRAYERS[i][0] === s.k) return PRAYERS[i][L() + 1];
+    return t("u_" + h.unit) + " " + (s.n || s.k);
+  }
+  function dayFrac(h, d) {
+    var dk = key(d);
+    if (h.type === "slots") { var req = reqSlots(h).length; return req ? Math.min(1, slotsReqDone(dk, h) / req) : 0; }
+    return doneK(dk, h.id) ? 1 : 0;
+  }
+
+  function pausedOn(h, d) {
+    var dk = key(d);
+    for (var i = 0; i < h.pauses.length; i++) { var p = h.pauses[i]; if (p.from <= dk && (!p.to || dk <= p.to)) return true; }
+    return false;
+  }
+  function pausedNow(h) { for (var i = 0; i < h.pauses.length; i++) if (!h.pauses[i].to) return true; return false; }
+  function dueOn(h, d) {
+    if (pausedOn(h, d) || isFrozenK(key(d), h.id)) return false;
+    if (h.days && h.days.indexOf(d.getDay()) === -1) return false;
+    return true;
+  }
+  function firstDone(h) {
+    var first = null;
+    for (var k in state.log) { if (state.log[k].indexOf(h.id) !== -1) { var d = parseKey(k); if (!first || d < first) first = d; } }
+    for (var k2 in state.sd) { if (state.sd[k2][h.id]) { var d2 = parseKey(k2); if (!first || d2 < first) first = d2; } }
+    return first;
+  }
+  function habitStart(h) {
+    if (h.createdAt) { var c = new Date(h.createdAt); return new Date(c.getFullYear(), c.getMonth(), c.getDate()); }
+    return firstDone(h) || startOfToday();
+  }
+  function firstActivity(h) { var s = habitStart(h), f = firstDone(h); return (f && f < s) ? f : s; }
+  function lastDoneDate(h, today) {
+    var last = null;
+    for (var k in state.log) { if (state.log[k].indexOf(h.id) !== -1) { var d = parseKey(k); if (d <= today && (!last || d > last)) last = d; } }
+    return last;
+  }
+
+  function habitCount(h, from, to) {
+    var start = habitStart(h), c = 0, p = 0;
+    for (var d = from; d <= to; d = addDays(d, 1)) {
+      var f = dayFrac(h, d);
+      if (f > 0) { p++; c += f; continue; }
+      if (d < start) continue;
+      if (dueOn(h, d)) p++;
+    }
+    return { c: c, p: p };
+  }
+  function aggregate(habits, from, to) {
+    var c = 0, p = 0;
+    habits.forEach(function (h) { var a = habitCount(h, from, to); c += a.c; p += a.p; });
+    return { c: c, p: p };
+  }
+  function pct(a) { return a.p ? Math.round((a.c / a.p) * 100) : 0; }
+  function earliestStart() {
+    var m = startOfToday();
+    actives().forEach(function (h) { var s = habitStart(h); if (s < m) m = s; });
+    return m;
+  }
+  function streak(h) {
+    var today = startOfToday(), d = today, n = 0, start = habitStart(h), guard = 0;
+    while (guard++ < 4000) {
+      if (done(d, h.id)) n++;
+      else if (d < start) break;
+      else if (!dueOn(h, d)) { /* يوم راحة: لا يكسر السلسلة */ }
+      else if (d.getTime() === today.getTime()) { /* اليوم لسا ما انتهى */ }
+      else break;
+      d = addDays(d, -1);
+    }
+    return n;
+  }
+  function bestStreak(h) {
+    var today = startOfToday(), best = 0, cur = 0;
+    for (var d = firstActivity(h); d <= today; d = addDays(d, 1)) {
+      if (done(d, h.id)) { cur++; if (cur > best) best = cur; }
+      else if (!dueOn(h, d)) continue;
+      else if (d.getTime() === today.getTime()) continue;
+      else cur = 0;
+    }
+    return best;
+  }
+  function weekStartFor(offset) {
+    var tt = startOfToday();
+    var since = (tt.getDay() - state.ws + 7) % 7;
+    return addDays(tt, -since + offset * 7);
+  }
+  function freezesUsed(h, dk) {
+    var pre = dk.slice(0, 7), n = 0;
+    for (var k in state.freeze) { if (k.indexOf(pre) === 0 && state.freeze[k].indexOf(h.id) !== -1) n++; }
+    return n;
+  }
+
+  /* ---------- الحلقات والحساب ---------- */
+  function basisFull() { return state.basis === "full"; }
+  function periodEnds(today) {
+    var ws = weekStartFor(0), full = basisFull();
+    return {
+      week: full ? addDays(ws, 6) : today,
+      month: full ? new Date(today.getFullYear(), today.getMonth() + 1, 0) : today,
+      year: full ? new Date(today.getFullYear(), 11, 31) : today
+    };
+  }
+  function basisHtml() {
+    var full = basisFull();
+    return '<div class="basis" role="group" aria-label="' + esc(t("basis_aria")) + '">' +
+      '<button class="bs" data-act="basis" data-v="sofar" aria-pressed="' + (!full) + '">' + t("basis_sofar") + "</button>" +
+      '<button class="bs" data-act="basis" data-v="full" aria-pressed="' + full + '">' + t("basis_full") + "</button></div>" +
+      '<div class="basis-note">' + t(full ? "basis_note_full" : "basis_note_sofar") + t("basis_note_tail") + "</div>";
+  }
+  function cap(a) { return a.p ? t("cap_of", { c: num(fc(a)), p: num(a.p) }) : t("cap_none"); }
+  function ring(a, size, sw, colorVar, label) {
+    var r = (size - sw) / 2, c = 2 * Math.PI * r, p = pct(a);
+    var off = c * (1 - p / 100), mid = size / 2;
+    var txt = a.p ? p + "%" : "—";
+    var fs = Math.round(size * 0.26);
+    return '<svg class="ring" viewBox="0 0 ' + size + " " + size + '" width="' + size + '" height="' + size + '" role="img" aria-label="' + esc(label) + " " + txt + '">' +
+      '<circle class="trk" cx="' + mid + '" cy="' + mid + '" r="' + r + '" stroke-width="' + sw + '"/>' +
+      '<circle class="val" cx="' + mid + '" cy="' + mid + '" r="' + r + '" stroke-width="' + sw + '" style="stroke:var(' + colorVar + ')" stroke-dasharray="' + c.toFixed(2) + '" stroke-dashoffset="' + off.toFixed(2) + '" transform="rotate(-90 ' + mid + " " + mid + ')"/>' +
+      '<text x="' + mid + '" y="' + (mid + 1) + '" font-size="' + fs + '">' + txt + "</text></svg>";
+  }
+
+  /* ---------- المود والاسم واللغة ---------- */
+  function currentTheme() {
+    if (state.theme === "dark" || state.theme === "light") return state.theme;
+    return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+  }
+  function applyTheme() {
+    var th = currentTheme();
+    document.documentElement.setAttribute("data-theme", th);
+    var b = el("themeBtn");
+    b.textContent = th === "dark" ? "☀️" : "🌙";
+    b.setAttribute("aria-label", t(th === "dark" ? "theme_light" : "theme_dark"));
+  }
+  function renderName() { el("nameBtn").textContent = state.name || t("name_none"); }
+  function startEditName() {
+    var inp = el("nameInput");
+    el("nameBtn").hidden = true;
+    inp.hidden = false; inp.value = state.name; inp.focus(); inp.select();
+  }
+  function finishEditName(cancel) {
+    var inp = el("nameInput");
+    if (inp.hidden) return;
+    if (!cancel) { var v = inp.value.trim(); state.name = v || state.name; save(); }
+    renderName();
+    inp.hidden = true;
+    el("nameBtn").hidden = false;
+  }
+
+  var STATIC = [
+    ["appTitle", "title"], ["tabTrack", "tab_track"], ["tabStats", "tab_stats"], ["tabSleep", "tab_sleep"], ["newQuoteBtn", "new_quote"],
+    ["wTitle", "w_title"], ["wP", "w_p"], ["wNameLbl", "w_name_lbl"], ["wLbl", "w_habits_lbl"], ["wAddBtn", "w_add"], ["startBtn", "w_start"], ["wHint", "w_hint"],
+    ["prevBtn", "prev_week"], ["nextBtn", "next_week"], ["addBtn", "add_btn"], ["optBuild", "t_build"], ["optQuit", "t_quit"],
+    ["optPrayers", "t_prayers"], ["optWater", "t_water"], ["optMeds", "t_meds"], ["optMulti", "t_multi"],
+    ["ruleBox", "rule"], ["sTitle", "s_title"], ["relLbl", "s_rel"], ["wsLbl", "s_ws"], ["archTitle", "s_archived"], ["sBkHint", "s_backup_hint"],
+    ["bkExport", "s_export"], ["bkImport", "s_import"], ["bkCsv", "s_csv"], ["noteTxt", "note"], ["credit", "credit"], ["rights", "rights"], ["verTxt", "ver"]
+  ];
+  var STATIC_PH = [["wName", "w_name_ph"], ["wCustom", "w_custom_ph"], ["newHabit", "add_ph"], ["newTarget", "target_ph"], ["bkText", "s_bk_ph"]];
+  var STATIC_ARIA = [["tabsBox", "aria_tabs"], ["heroBox", "hero_aria"], ["prevBtn", "prev_week"], ["nextBtn", "next_week"], ["wCustom", "w_custom_ph"],
+    ["newHabit", "add_ph"], ["nameInput", "name_input_aria"], ["nameBtn", "name_edit_aria"], ["newType", "t_aria"], ["newTarget", "target_ph"], ["bkText", "s_bk_aria"]];
+
+  function applyLang() {
+    buildFormatters();
+    var en = state.lang === "en", de = document.documentElement;
+    de.setAttribute("lang", en ? "en" : "ar");
+    de.setAttribute("dir", en ? "ltr" : "rtl");
+    document.title = t("title");
+    STATIC.forEach(function (p) { el(p[0]).innerHTML = t(p[1]); });
+    STATIC_PH.forEach(function (p) { el(p[0]).placeholder = t(p[1]); });
+    STATIC_ARIA.forEach(function (p) { el(p[0]).setAttribute("aria-label", t(p[1])); });
+    var lb = el("langBtn");
+    lb.textContent = en ? "ع" : "EN";
+    lb.setAttribute("aria-label", en ? "التبديل إلى العربية" : "Switch to English");
+    el("resetBtn").textContent = t(resetArmed ? "reset_confirm" : "reset");
+    applyTheme(); renderName(); renderQuote(); syncSettings(); render();
+  }
+
+  /* ---------- جملة اليوم ---------- */
+  function dayNumber(d) { return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); }
+  function isRel(q) { return q[1].indexOf("القرآن") === 0 || q[1].indexOf("حديث") === 0; }
+  function pool() {
+    var P = [];
+    QUOTES.forEach(function (q, i) { if (!(state.noRel && isRel(q))) P.push(i); });
+    return P;
+  }
+  function ensureQuote() {
+    var tt = startOfToday(), tk = key(tt), bad = true;
+    if (state.quote && state.quote.day === tk && state.quote.idx < QUOTES.length) bad = !!(state.noRel && isRel(QUOTES[state.quote.idx]));
+    if (bad) { var P = pool(); state.quote = { day: tk, idx: P[(dayNumber(tt) * 7) % P.length] }; save(); }
+  }
+  function quoteAt(i) {
+    var q = QUOTES[i], en = state.lang === "en";
+    return { t: en ? QEN[i] : q[0], s: en ? (SEN[q[1]] || q[1]) : q[1], ar: (en && isRel(q)) ? q[0] : "" };
+  }
+  function renderQuote() {
+    ensureQuote();
+    var q = quoteAt(state.quote.idx);
+    el("quoteText").textContent = q.t;
+    el("quoteSrc").textContent = q.s;
+    var a = el("quoteAr"); a.textContent = q.ar; a.hidden = !q.ar;
+  }
+  function newQuote() {
+    ensureQuote();
+    var P = pool(), j;
+    do { j = P[Math.floor(Math.random() * P.length)]; } while (j === state.quote.idx && P.length > 1);
+    state.quote.idx = j; save(); renderQuote();
+  }
+
+  /* ---------- الترحيب ---------- */
+  function pickedNames() {
+    var out = [];
+    SUGGEST.forEach(function (p, i) { if (ui.pick["s" + i]) out.push(p[L()]); });
+    ui.extra.forEach(function (n, j) { if (ui.pick["c" + j]) out.push(n); });
+    return out;
+  }
+  function updateStartBtn() { el("startBtn").disabled = !(el("wName").value.trim().length > 0 && pickedNames().length > 0); }
+  function renderWelcome() {
+    var html = "";
+    SUGGEST.forEach(function (p, i) { html += '<button class="chip" data-act="pick" data-k="s' + i + '" aria-pressed="' + !!ui.pick["s" + i] + '">' + esc(p[L()]) + "</button>"; });
+    ui.extra.forEach(function (n, j) { html += '<button class="chip" data-act="pick" data-k="c' + j + '" aria-pressed="' + !!ui.pick["c" + j] + '">' + esc(n) + "</button>"; });
+    el("wChips").innerHTML = html;
+    updateStartBtn();
+  }
+  function addCustom() {
+    var inp = el("wCustom"), n = inp.value.trim();
+    if (!n) { inp.focus(); return; }
+    var j = ui.extra.indexOf(n);
+    if (j === -1) { ui.extra.push(n); j = ui.extra.length - 1; }
+    ui.pick["c" + j] = true;
+    inp.value = "";
+    renderWelcome();
+  }
+  function setMode(on) {
+    el("welcome").hidden = on;
+    el("nameBtn").hidden = !on;
+    el("heroBox").hidden = !on;
+    el("tabsBox").hidden = !on;
+    if (!on) { el("pageTrack").hidden = true; el("pageStats").hidden = true; el("pageSleep").hidden = true; el("nameInput").hidden = true; }
+  }
+
+  /* ---------- الإعدادات ---------- */
+  function syncSettings() {
+    el("relToggle").checked = !state.noRel;
+    var sel = el("wsSel"), html = "";
+    [6, 0, 1].forEach(function (wd) { html += '<option value="' + wd + '"' + (state.ws === wd ? " selected" : "") + ">" + esc(wdName(wd, true)) + "</option>"; });
+    sel.innerHTML = html;
+    if (state.ws !== 6 && state.ws !== 0 && state.ws !== 1) sel.innerHTML += '<option value="' + state.ws + '" selected>' + esc(wdName(state.ws, true)) + "</option>";
+    sel.value = String(state.ws);
+    renderArchived();
+  }
+  function renderArchived() {
+    var A = state.habits.filter(function (h) { return h.archived; }), html = "";
+    if (!A.length) html = '<div class="hint">' + t("s_none_arch") + "</div>";
+    A.forEach(function (h) {
+      var armed = ui.delArm === "f" + h.id;
+      html += '<div class="arch"><span>' + esc(h.name) + '</span><span><button class="btn sm" data-act="restore" data-id="' + h.id + '">' + t("s_restore") +
+        '</button> <button class="btn sm danger" data-act="delfinal" data-id="' + h.id + '">' + (armed ? t("confirm_del") : t("s_delete")) + "</button></span></div>";
+    });
+    el("archList").innerHTML = html;
+  }
+
+  /* ---------- الرسم ---------- */
+  function render() {
+    var today = startOfToday();
+    el("today").textContent = F.long.format(today);
+    if (!state.onboarded) { setMode(false); renderWelcome(); return; }
+    setMode(true);
+    var pg = ui.page;
+    el("pageTrack").hidden = pg !== "track";
+    el("pageStats").hidden = pg !== "stats";
+    el("pageSleep").hidden = pg !== "sleep";
+    ["Track", "Stats", "Sleep"].forEach(function (n) { el("tab" + n).setAttribute("aria-selected", String(pg === n.toLowerCase())); });
+    if (pg === "track") renderTrack(today); else if (pg === "stats") renderStats(today); else renderSleep(today);
+    scrollHeat();
+  }
+  function scrollHeat() {
+    if (!document.querySelectorAll) return;
+    var n = document.querySelectorAll(".hmwrap");
+    for (var i = 0; i < n.length; i++) n[i].scrollLeft = n[i].scrollWidth;
+  }
+
+  function summaryHtml(today) {
+    var H = actives(), e = periodEnds(today);
+    var d1 = aggregate(H, today, today);
+    var wk = aggregate(H, weekStartFor(0), e.week);
+    var mo = aggregate(H, new Date(today.getFullYear(), today.getMonth(), 1), e.month);
+    var yr = aggregate(H, new Date(today.getFullYear(), 0, 1), e.year);
+    function item(a, col, l) {
+      return '<div class="rg">' + ring(a, 76, 9, col, l) + '<div class="l">' + l + '</div><div class="s">' + (a.p ? num(fc(a) + "/" + a.p) : "—") + "</div></div>";
+    }
+    return '<div class="rings4 compact">' + item(d1, "--c1", t("d_today")) + item(wk, "--c2", t("d_week")) + item(mo, "--c3", t("d_month")) + item(yr, "--c5", t("d_year")) + "</div>" + basisHtml();
+  }
+
+  function cellState(h, d) {
+    var dk = key(d);
+    if (doneK(dk, h.id)) return "done";
+    if (h.type === "slots" && slotsTotalDone(dk, h) > 0) return "part";
+    if (isSlipK(dk, h.id)) return "slip";
+    if (isFrozenK(dk, h.id)) return "frozen";
+    if (!dueOn(h, d)) return "off";
+    return "";
+  }
+  var CELL_TXT = { done: "✓", slip: "✕", frozen: "❄", off: "·", "": "" };
+
+  function ensureSel(h, days, today) {
+    var s = ui.sel[h.id], ok = false;
+    days.forEach(function (d) { if (key(d) === s) ok = true; });
+    if (ok) return;
+    var pick = days[0];
+    days.forEach(function (d) { if (d <= today) pick = d; });
+    ui.sel[h.id] = key(pick);
+  }
+
+  function subRowsHtml(h, days, today, todayKey) {
+    var html = "";
+    h.slots.forEach(function (s) {
+      html += '<div class="row subrow"><div class="hname sub">' + esc(slotLabel(h, s)) + (s.o ? ' <small class="opt2">' + t("optional") + "</small>" : "") + "</div>";
+      days.forEach(function (d) {
+        var dk = key(d), dn = slotDone(dk, h, s.k), st = dn ? "done" : (!dueOn(h, d) ? "off" : "");
+        html += '<div class="c' + (dk === todayKey ? " today" : "") + '"><button class="dot sm" data-act="slot" data-id="' + h.id + '" data-k="' + esc(s.k) + '" data-date="' + dk + '" data-s="' + st +
+          '" aria-pressed="' + dn + '" aria-label="' + esc(slotLabel(h, s)) + " – " + esc(F.day.format(d)) + " " + d.getDate() + '"' + (d > today ? " disabled" : "") + ">" + (dn ? "✓" : (st === "off" ? "·" : "")) + "</button></div>";
+      });
+      html += "</div>";
+    });
+    return html;
+  }
+
+  function motCardHtml(h) {
+    var m = (h.motivation || "").trim(), w = (h.why || "").trim(), c = (h.cue || "").trim(), body = "";
+    if (m) body += '<div class="mq">«' + esc(m) + "»</div>";
+    if (w) body += '<div class="mw">' + t("why_prefix") + esc(w) + "</div>";
+    if (c) body += '<div class="mw">' + t("cue_prefix") + esc(c) + "</div>";
+    if (!body) body = '<div class="mw">' + t("mot_empty") + "</div>";
+    var o = ui.setOpen === h.id;
+    return '<div class="mot" role="note">' + body + '<div class="tools" style="margin-top:10px"><button class="btn sm" data-act="hset" data-id="' + h.id + '" aria-expanded="' + o + '">⚙ ' + t(o ? "hset_close" : "hset_btn") + "</button></div></div>";
+  }
+
+  function settingsHtml(h, today, days) {
+    var q = h.type === "quit", id = h.id;
+    ensureSel(h, days, today);
+    var sel = ui.sel[id], selD = parseKey(sel);
+    var st = streak(h), best = bestStreak(h), since = habitCount(h, habitStart(h), today);
+    var created = h.createdAt ? F.full.format(new Date(h.createdAt)) : t("before_feature");
+    var html = '<div class="panel">';
+    html += '<div class="facts">' +
+      '<div style="grid-column:1/-1"><span class="k">' + t("p_added") + "</span><b>" + created + "</b></div>" +
+      '<div><span class="k">' + t("p_since") + "</span><b>" + num(pct(since) + "%") + "</b></div>" +
+      '<div><span class="k">' + t("p_days_done") + "</span><b>" + t("cap_of", { c: num(fc(since)), p: num(since.p) }) + "</b></div>" +
+      '<div><span class="k">' + t(q ? "p_streak_q" : "p_streak") + "</span><b>" + t("p_days_unit", { n: num(st) }) + "</b></div>" +
+      '<div><span class="k">' + t(q ? "p_best_q" : "p_best") + "</span><b>" + t("p_days_unit", { n: num(best) }) + "</b></div></div>";
+    if (pausedNow(h)) html += '<div class="hint" style="margin:0 0 8px">⏸ ' + t("p_paused_note") + "</div>";
+
+    html += '<div class="sect"><label for="why-' + id + '">' + t("p_why") + '</label>' +
+      '<textarea class="fld" id="why-' + id + '" data-field="why" data-id="' + id + '" rows="2" maxlength="300" placeholder="' + esc(t("p_why_ph")) + '">' + esc(h.why || "") + "</textarea>" +
+      '<label for="mt-' + id + '">' + t("p_mot") + '</label>' +
+      '<textarea class="fld" id="mt-' + id + '" data-field="motivation" data-id="' + id + '" rows="2" maxlength="300" placeholder="' + esc(t("p_mot_ph")) + '">' + esc(h.motivation || "") + "</textarea>" +
+      '<label for="cu-' + id + '">' + t("p_cue") + '</label>' +
+      '<textarea class="fld" id="cu-' + id + '" data-field="cue" data-id="' + id + '" rows="1" maxlength="200" placeholder="' + esc(t("p_cue_ph")) + '">' + esc(h.cue || "") + "</textarea>" +
+      '<div class="hint">' + t("p_hint") + "</div></div>";
+
+    html += '<div class="sect"><div class="lbl">' + t("p_sched") + '</div><div class="chips2">';
+    for (var i = 0; i < 7; i++) {
+      var wd = (state.ws + i) % 7, on = !h.days || h.days.indexOf(wd) !== -1;
+      html += '<button class="wchip" data-act="wd" data-id="' + id + '" data-d="' + wd + '" aria-pressed="' + on + '">' + esc(wdName(wd, false)) + "</button>";
+    }
+    html += '<button class="wchip all" data-act="wdall" data-id="' + id + '">' + t("p_all") + '</button></div><div class="hint">' + t("p_sched_hint") + "</div></div>";
+
+    if (h.type === "slots") {
+      html += '<div class="sect"><div class="lbl">' + t("p_slots") + "</div>";
+      if (h.kind === "prayers") {
+        html += '<div class="chips2">';
+        h.slots.forEach(function (s) {
+          html += '<button class="wchip" data-act="slotopt" data-id="' + id + '" data-k="' + esc(s.k) + '" aria-pressed="' + (!s.o) + '">' + esc(slotLabel(h, s)) + (s.o ? " · " + t("optional") : "") + "</button>";
+        });
+        html += '</div><div class="hint">' + t("p_slots_opt") + "</div>";
+      } else {
+        html += '<label for="sn-' + id + '">' + t("p_slots_n") + '</label><input id="sn-' + id + '" class="numin" type="number" min="1" max="30" value="' + h.slots.length + '" data-field="slotn" data-id="' + id + '">';
+      }
+      html += "</div>";
+    }
+
+    html += '<div class="sect"><div class="lbl">' + t("p_day_tools") + '</div><div class="chips2">';
+    days.forEach(function (d) {
+      var dk = key(d), mark = (getNote(dk, id) ? " 📝" : "") + (isFrozenK(dk, id) ? " ❄" : "");
+      html += '<button class="wchip" data-act="selday" data-id="' + id + '" data-date="' + dk + '" aria-pressed="' + (dk === sel) + '"' + (d > today ? " disabled" : "") + ">" + esc(F.day.format(d)) + " " + d.getDate() + mark + "</button>";
+    });
+    html += "</div>";
+    html += '<label for="nt-' + id + '">' + t("p_note") + " · " + esc(F.short.format(selD)) + "</label>" +
+      '<textarea id="nt-' + id + '" data-field="note" data-id="' + id + '" data-date="' + sel + '" rows="2" maxlength="400" placeholder="' + esc(t("p_note_ph")) + '">' + esc(getNote(sel, id)) + "</textarea>";
+    var frozen = isFrozenK(sel, id);
+    html += '<div class="cnt"><button class="btn sm" data-act="freeze" data-id="' + id + '">❄ ' + t(frozen ? "p_unfreeze" : "p_freeze") + "</button></div>" +
+      '<div class="hint">' + t("p_freeze_left", { n: num(Math.max(0, FREEZES - freezesUsed(h, sel))) }) + "</div></div>";
+
+    var notes = [];
+    for (var k in state.notes) { if (state.notes[k][id]) notes.push(k); }
+    notes.sort().reverse();
+    if (notes.length) {
+      html += '<div class="sect"><div class="lbl">' + t("p_recent") + "</div>";
+      notes.slice(0, 5).forEach(function (k2) { html += '<div class="rn"><b>' + esc(F.short.format(parseKey(k2))) + "</b> " + esc(state.notes[k2][id]) + "</div>"; });
+      html += "</div>";
+    }
+    html += '<div class="tools" style="margin-top:12px"><button class="btn sm" data-act="pause" data-id="' + id + '">' + (pausedNow(h) ? "▶ " + t("p_resume") : "⏸ " + t("p_pause")) +
+      '</button><button class="btn sm" data-act="archive" data-id="' + id + '">🗄 ' + t("p_archive") + "</button></div></div>";
+    return html;
+  }
+
+  function renderTrack(today) {
+    var H = actives();
+    var ws = weekStartFor(weekOffset), days = [];
+    for (var i = 0; i < 7; i++) days.push(addDays(ws, i));
+    var todayKey = key(today), wEnd = days[6] > today ? today : days[6];
+
+    el("summary").innerHTML = summaryHtml(today);
+    el("weekLabel").innerHTML = num(F.short.format(days[0])) + " – " + num(F.short.format(days[6]));
+    el("nextBtn").disabled = weekOffset >= 0;
+    el("editBtn").textContent = editMode ? t("done") : t("edit_habits");
+
+    var html = '<div class="row headrow"><div class="hname" style="border-inline-start-color:transparent"></div>';
+    days.forEach(function (d) { html += '<div class="dh' + (key(d) === todayKey ? " today" : "") + '">' + F.day.format(d) + "<b>" + d.getDate() + "</b></div>"; });
+    html += "</div>";
+    if (H.length === 0) html += '<div class="hname" style="padding:20px"><div class="hn" style="cursor:default">' + t("no_habits") + '</div><div class="m">' + t("no_habits_sub") + "</div></div>";
+
+    H.forEach(function (h) {
+      var hi = state.habits.indexOf(h), q = h.type === "quit", sl = h.type === "slots";
+      var agg = habitCount(h, ws, basisFull() ? days[6] : (wEnd < ws ? ws : wEnd));
+      var st = streak(h), open = ui.expanded === h.id && !editMode;
+      var icon = q ? "🚫 " : (h.kind === "prayers" ? "🕌 " : h.kind === "water" ? "💧 " : h.kind === "meds" ? "💊 " : sl ? "🔢 " : "");
+
+      html += '<div class="hwrap" style="' + hcStyle(hi) + '"><div class="row"><div class="hname">';
+      if (editMode) {
+        var armed = ui.delArm === h.id;
+        html += '<div style="display:flex;align-items:center;gap:2px"><input class="rename" data-id="' + h.id + '" value="' + esc(h.name) + '" maxlength="40" aria-label="' + esc(h.name) + '">' +
+          '<button class="del' + (armed ? " armed" : "") + '" data-act="del" data-id="' + h.id + '" aria-label="' + esc(t("confirm_del")) + '">' + (armed ? t("confirm_del") : "×") + "</button></div>";
+      } else {
+        html += '<button class="hn" data-act="expand" data-id="' + h.id + '" aria-expanded="' + open + '">' + icon + esc(h.name) + "</button>" +
+          '<div class="m">' + num(agg.p ? pct(agg) + "%" : "—") + (st > 0 ? " · " + t(q ? "clean" : "streak") + " " + num(st) : "") + (pausedNow(h) ? " · ⏸" : "") + "</div>";
+      }
+      html += "</div>";
+
+      days.forEach(function (d, idx) {
+        var s = cellState(h, d), dk = key(d);
+        var nextDone = idx < 6 && done(days[idx + 1], h.id);
+        var cls = "c" + (dk === todayKey ? " today" : "") + (s === "done" && nextDone ? " link" : "");
+        var txt = s === "part" ? slotsTotalDone(dk, h) : CELL_TXT[s];
+        html += '<div class="' + cls + '"><button class="dot" data-act="toggle" data-id="' + h.id + '" data-date="' + dk + '" data-s="' + s +
+          '" aria-pressed="' + (s === "done") + '" aria-label="' + esc(h.name) + " – " + esc(F.day.format(d)) + " " + d.getDate() + '"' + (d > today ? " disabled" : "") + ">" + txt + "</button></div>";
+      });
+      html += "</div>";
+
+      if (open && sl) html += subRowsHtml(h, days, today, todayKey);
+      if (open) html += motCardHtml(h);
+      if (open && ui.setOpen === h.id) html += settingsHtml(h, today, days);
+      html += "</div>";
+    });
+    el("grid").innerHTML = html;
+    renderNudge(today);
+    renderArchived();
+  }
+
+  function renderNudge(today) {
+    var box = el("nudge"), H = actives();
+    if (weekOffset !== 0 || H.length === 0) { box.innerHTML = ""; return; }
+    var y = addDays(today, -1), msg = "", cls = "nudge";
+    var slip = H.filter(function (h) { return h.type === "quit" && (isSlipK(key(today), h.id) || isSlipK(key(y), h.id)); })[0];
+    var gap = null;
+    H.forEach(function (h) {
+      if (pausedNow(h)) return;
+      var last = lastDoneDate(h, today);
+      if (!last) return;
+      var d = diffDays(today, last);
+      if (d >= 3 && (!gap || d > gap.d)) gap = { h: h, d: d };
+    });
+    var missed = H.filter(function (h) { return !!lastDoneDate(h, today) && !done(y, h.id) && dueOn(h, y) && !done(today, h.id); });
+    var due = H.filter(function (h) { return dueOn(h, today) || done(today, h.id); });
+    var remaining = due.filter(function (h) { return !done(today, h.id); });
+    if (slip) { msg = t("nudge_slip", { name: esc(slip.name) }); cls += " warn"; }
+    else if (gap) { msg = t("nudge_restart", { d: num(gap.d), name: esc(gap.h.name) }); cls += " warn"; }
+    else if (missed.length) { msg = t("nudge_missed", { names: missed.map(function (h) { return esc(h.name); }).join(state.lang === "en" ? ", " : "، ") }); cls += " warn"; }
+    else if (due.length === 0) { msg = t("nudge_rest"); cls += " good"; }
+    else if (remaining.length === 0) { msg = t("nudge_all"); cls += " good"; }
+    else msg = t("nudge_left", { r: num(remaining.length), n: num(due.length) });
+    box.innerHTML = '<div class="' + cls + '">' + msg + "</div>";
+  }
+
+  /* ---------- الإحصائيات ---------- */
+  function heatHtml(h, today) {
+    var N = ui.hm, ws0 = addDays(weekStartFor(0), -(N - 1) * 7);
+    var cells = "", months = "", prevM = -1, H = actives();
+    var start = h ? habitStart(h) : earliestStart();
+    for (var c = 0; c < N; c++) {
+      var d0 = addDays(ws0, c * 7), lab = "";
+      if (d0.getMonth() !== prevM) { lab = F.month.format(d0); prevM = d0.getMonth(); }
+      months += "<span>" + esc(lab) + "</span>";
+      for (var r = 0; r < 7; r++) {
+        var d = addDays(d0, r), cls = "f", title = "";
+        if (d <= today) {
+          if (h) {
+            var dk = key(d);
+            if (doneK(dk, h.id)) { cls = "d"; title = t("hs_done"); }
+            else if (h.type === "slots" && slotsTotalDone(dk, h) > 0) { cls = "p"; title = t("hs_part"); }
+            else if (isSlipK(dk, h.id)) { cls = "s"; title = t("hs_slip"); }
+            else if (isFrozenK(dk, h.id)) { cls = "z"; title = t("hs_frozen"); }
+            else if (d < start) cls = "n";
+            else if (!dueOn(h, d)) { cls = "o"; title = t("hs_rest"); }
+            else { cls = "m"; title = t("hs_missed"); }
+          } else {
+            var a = aggregate(H, d, d);
+            if (a.p === 0) cls = d < start ? "n" : "o";
+            else {
+              var rr = a.c / a.p;
+              cls = rr === 0 ? "m" : rr < 0.34 ? "l1" : rr < 0.67 ? "l2" : rr < 1 ? "l3" : "l4";
+              title = Math.round(rr * 100) + "%";
+            }
+          }
+        }
+        cells += '<i class="' + cls + '"' + (d <= today ? ' title="' + esc(F.short.format(d) + (title ? " · " + title : "")) + '"' : "") + "></i>";
+      }
+    }
+    return '<div class="hmwrap"><div class="hmm" style="--n:' + N + '">' + months + '</div><div class="hm" style="--n:' + N + '">' + cells + "</div></div>";
+  }
+  function hmButtons() {
+    var o = [[13, "hm_3"], [26, "hm_6"], [53, "hm_12"]], html = '<div class="basis">';
+    o.forEach(function (x) { html += '<button class="bs" data-act="hm" data-n="' + x[0] + '" aria-pressed="' + (ui.hm === x[0]) + '">' + t(x[1]) + "</button>"; });
+    return html + "</div>";
+  }
+  function weekdayStats(H, today) {
+    var out = [];
+    for (var i = 0; i < 7; i++) out.push({ c: 0, p: 0 });
+    H.forEach(function (h) {
+      for (var d = habitStart(h); d < today; d = addDays(d, 1)) { var a = habitCount(h, d, d); out[d.getDay()].c += a.c; out[d.getDay()].p += a.p; }
+    });
+    return out;
+  }
+  function weekdayHtml(H, today) {
+    var ws = weekdayStats(H, today), order = [], best = null, worst = null;
+    for (var i = 0; i < 7; i++) order.push((state.ws + i) % 7);
+    var rows = "";
+    order.forEach(function (wd) {
+      var a = ws[wd], p = a.p ? Math.round(a.c / a.p * 100) : 0;
+      if (a.p >= 2) {
+        if (!best || p > best.p) best = { wd: wd, p: p };
+        if (!worst || p < worst.p) worst = { wd: wd, p: p };
+      }
+      rows += '<div class="bar"><span class="bl">' + esc(wdName(wd, false)) + '</span><span class="bt"><span class="bf" style="width:' + p + '%"></span></span><span class="bv">' + num(a.p ? p + "%" : "—") + "</span></div>";
+    });
+    var ins = "";
+    if (best && worst && best.wd !== worst.wd) {
+      ins = '<p class="hint" style="margin:10px 0 0">' + t("st_best", { d: esc(wdName(best.wd, true)), p: num(best.p + "%") }) + " · " + t("st_weak", { d: esc(wdName(worst.wd, true)), p: num(worst.p + "%") }) + "</p>";
+    } else ins = '<p class="hint" style="margin:10px 0 0">' + t("st_wd_none") + "</p>";
+    return '<div class="bars">' + rows + "</div>" + ins;
+  }
+
+  function reviewHtml() {
+    var wk = key(weekStartFor(0)), rv = state.reviews[wk] || {};
+    var html = '<section class="card"><h2>' + t("wr_title") + '</h2><p class="hint" style="margin:0 0 4px">' + t("wr_hint") + " · " + t("wr_for", { d: esc(F.short.format(parseKey(wk))) }) + "</p>" +
+      '<label class="flbl" for="wr-a">' + t("wr_q1") + '</label><textarea id="wr-a" data-field="wr-a" data-wk="' + wk + '" rows="2" maxlength="500">' + esc(rv.a || "") + "</textarea>" +
+      '<label class="flbl" for="wr-b">' + t("wr_q2") + '</label><textarea id="wr-b" data-field="wr-b" data-wk="' + wk + '" rows="2" maxlength="500">' + esc(rv.b || "") + "</textarea>";
+    var past = Object.keys(state.reviews).filter(function (k) { return k !== wk; }).sort().reverse().slice(0, 4);
+    if (past.length) {
+      html += '<div class="lbl" style="margin-top:14px">' + t("wr_past") + "</div>";
+      past.forEach(function (k) {
+        var r = state.reviews[k];
+        html += '<div class="rn"><b>' + t("wr_for", { d: esc(F.short.format(parseKey(k))) }) + "</b>" + (r.a ? "<br>✔ " + esc(r.a) : "") + (r.b ? "<br>➜ " + esc(r.b) : "") + "</div>";
+      });
+    }
+    return html + "</section>";
+  }
+
+  function renderStats(today) {
+    var H = actives(), box = el("pageStats");
+    if (H.length === 0) { box.innerHTML = '<div class="card"><div class="empty">' + t("st_empty") + "</div></div>" + reviewHtml(); return; }
+    var e = periodEnds(today), ws = weekStartFor(0);
+    var ms = new Date(today.getFullYear(), today.getMonth(), 1), ys = new Date(today.getFullYear(), 0, 1);
+    var d1 = aggregate(H, today, today), wk = aggregate(H, ws, e.week), mo = aggregate(H, ms, e.month), yr = aggregate(H, ys, e.year);
+    var pw = aggregate(H, addDays(ws, -7), addDays(ws, -1));
+    var pm = aggregate(H, new Date(today.getFullYear(), today.getMonth() - 1, 1), new Date(today.getFullYear(), today.getMonth(), 0));
+    var all = aggregate(H, earliestStart(), today);
+    function big(a, col, l) { return '<div class="rg">' + ring(a, 108, 12, col, l) + '<div class="l">' + l + '</div><div class="s">' + cap(a) + "</div></div>"; }
+    function mid(a, col, l) { return '<div class="rg">' + ring(a, 88, 10, col, l) + '<div class="l">' + l + '</div><div class="s">' + cap(a) + "</div></div>"; }
+    function mini(a, col, l) { return '<div class="mini">' + ring(a, 56, 6, col, l) + "<small>" + l + "</small><small>" + (a.p ? num(fc(a) + "/" + a.p) : "—") + "</small></div>"; }
+
+    var html = '<section class="card"><h2>' + t("st_main") + "</h2>" + basisHtml() + '<div class="rings4">' +
+      big(d1, "--c1", t("d_today")) + big(wk, "--c2", t("d_this_week")) + big(mo, "--c3", t("d_this_month")) + big(yr, "--c5", t("d_this_year")) + "</div></section>";
+    html += '<section class="card"><h2>' + t("st_second") + '</h2><div class="rings3">' +
+      mid(pw, "--c2", t("d_last_week")) + mid(pm, "--c3", t("d_last_month")) + mid(all, "--c1", t("d_since")) + "</div></section>";
+    html += '<section class="card"><h2>' + t("st_week") + "</h2>" + weekdayHtml(H, today) + "</section>";
+    html += '<section class="card"><h2>' + t("st_heat") + "</h2>" + hmButtons() + heatHtml(null, today) + '<p class="hint" style="margin:8px 0 0">' + t("hm_hint") + "</p></section>";
+    html += '<section class="card"><h2>' + t("st_per") + '</h2><p class="hint" style="margin:0 0 4px">' + t("st_per_hint") + "</p>";
+    H.forEach(function (h) {
+      var hi = state.habits.indexOf(h), q = h.type === "quit";
+      var hw = habitCount(h, ws, e.week), hm = habitCount(h, ms, e.month), hy = habitCount(h, ys, e.year), ha = habitCount(h, habitStart(h), today);
+      var added = h.createdAt ? t("added", { d: esc(F.added.format(new Date(h.createdAt))) }) : t("added", { d: t("added_unknown") });
+      html += '<div class="hstat" style="' + hcStyle(hi) + '"><div class="nm">' + (q ? "🚫 " : "") + esc(h.name) +
+        "<small>" + added + "</small><small>" + t(q ? "st_line_q" : "st_line", { a: num(streak(h)), b: num(bestStreak(h)) }) + "</small></div>" +
+        '<div class="minis">' + mini(hw, "--c2", t("d_week")) + mini(hm, "--c3", t("d_month")) + mini(hy, "--c5", t("d_year")) + mini(ha, "--c1", t("d_all")) + "</div>" +
+        heatHtml(h, today) + "</div>";
+    });
+    html += "</section>" + reviewHtml();
+    box.innerHTML = html;
+  }
+
+  /* ---------- النوم ---------- */
+  function toMin(v) { var p = v.split(":"); return (+p[0]) * 60 + (+p[1]); }
+  function fmtHM(min) { min = ((Math.round(min) % 1440) + 1440) % 1440; return pad(Math.floor(min / 60)) + ":" + pad(min % 60); }
+  function sleepDur(e) { var d = toMin(e.wake) - toMin(e.bed); if (d <= 0) d += 1440; return d; }
+  function bedNorm(v) { var b = toMin(v); return b < 720 ? b + 1440 : b; }
+  function circDiff(a, b) { var d = Math.abs(a - b) % 1440; return Math.min(d, 1440 - d); }
+  function sleepScore(e) {
+    var dur = sleepDur(e) / 60, goal = state.sleepGoal, pts = 0;
+    if (dur >= goal - 0.5 && dur <= goal + 2) pts += 2; else if (dur >= goal - 1.5 && dur <= goal + 3) pts += 1;
+    var late = bedNorm(e.bed) - bedNorm(state.bedTarget);
+    if (late <= 0) pts += 2; else if (late <= 60) pts += 1;
+    return pts;
+  }
+  function hmTxt(min) { var r = Math.round(min); return t("sl_hm", { h: Math.floor(r / 60), m: r % 60 }); }
+  function durTxt(e) { var r = Math.round(sleepDur(e)); return Math.floor(r / 60) + ":" + pad(r % 60); }
+  function loadSleepForm() {
+    var e = state.sleep[ui.sleepDate];
+    ui.sleepForm = e ? { bed: e.bed, wake: e.wake, q: e.q, note: e.note } : { bed: state.bedTarget, wake: state.wakeTarget, q: 0, note: "" };
+  }
+  function sleepLiveText() {
+    var f = ui.sleepForm;
+    if (!f || !validHM(f.bed) || !validHM(f.wake)) return "";
+    var e = { bed: f.bed, wake: f.wake }, r = Math.round(sleepDur(e)), late = bedNorm(f.bed) - bedNorm(state.bedTarget);
+    var rel = late < 0 ? t("sl_rel_early", { n: -late }) : (late === 0 ? t("sl_rel_on") : t("sl_rel_late", { n: late }));
+    return t("sl_live", { h: Math.floor(r / 60), m: r % 60, rel: rel, s: sleepScore(e) });
+  }
+  function zcls(d, today) {
+    if (d > today) return "zcf";
+    var e = state.sleep[key(d)];
+    return e ? "zc" + sleepScore(e) : "zcu";
+  }
+  function recentNights(n, today) {
+    var out = [];
+    for (var i = 0; i < n; i++) { var d = addDays(today, -i), e = state.sleep[key(d)]; if (e) out.push({ d: d, e: e }); }
+    return out;
+  }
+  function bedStreak(today) {
+    var n = 0, tgt = bedNorm(state.bedTarget) + 15;
+    for (var i = 0; i < 4000; i++) {
+      var e = state.sleep[key(addDays(today, -i))];
+      if (!e) { if (i === 0) continue; break; }
+      if (bedNorm(e.bed) <= tgt) n++; else break;
+    }
+    return n;
+  }
+  function sleepHeat(today) {
+    var N = 53, ws0 = addDays(weekStartFor(0), -(N - 1) * 7), cells = "", months = "", prevM = -1;
+    for (var c = 0; c < N; c++) {
+      var d0 = addDays(ws0, c * 7), lab = "";
+      if (d0.getMonth() !== prevM) { lab = F.month.format(d0); prevM = d0.getMonth(); }
+      months += "<span>" + esc(lab) + "</span>";
+      for (var r = 0; r < 7; r++) {
+        var d = addDays(d0, r), cls = zcls(d, today), e = state.sleep[key(d)];
+        cells += '<i class="' + cls + '"' + (d <= today ? ' title="' + esc(F.short.format(d) + (e ? " · " + durTxt(e) : "")) + '"' : "") + "></i>";
+      }
+    }
+    return '<div class="hmwrap"><div class="hmm" style="--n:' + N + '">' + months + '</div><div class="hm" style="--n:' + N + '">' + cells + "</div></div>";
+  }
+  function renderSleep(today) {
+    var box = el("pageSleep"), tk = key(today), y = today.getFullYear();
+    if (!ui.sleepDate || parseKey(ui.sleepDate) > today) { ui.sleepDate = tk; ui.sleepForm = null; }
+    if (!ui.sleepForm) loadSleepForm();
+    var yStart = new Date(y, 0, 1), elapsed = diffDays(today, yStart) + 1, totalDays = diffDays(new Date(y + 1, 0, 1), yStart);
+    var logged = 0, good = 0;
+    for (var d = yStart; d <= today; d = addDays(d, 1)) { var en = state.sleep[key(d)]; if (en) { logged++; if (sleepScore(en) >= 3) good++; } }
+
+    var html = '<section class="card"><h2>' + t("sl_year") + '</h2><div class="yr"><div>' + ring({ c: good, p: elapsed }, 104, 12, "--c5", t("sl_good_lbl")) + '<div class="rg"><div class="l">' + t("sl_good_lbl") + "</div></div></div><div class=\"yrt\">" +
+      "<div>" + t("sl_year_logged", { n: num(logged), t: num(totalDays) }) + "</div><div>" + t("sl_year_good", { n: num(good) }) + "</div><div>" + t("sl_streak", { n: num(bedStreak(today)) }) + "</div></div></div></section>";
+
+    var f = ui.sleepForm, qs = ["😫", "😕", "😐", "🙂", "😄"];
+    html += '<section class="card"><h2>' + t("sl_title") + "</h2>" +
+      '<label class="flbl" for="sl-date">' + t("sl_date") + '</label><input id="sl-date" class="tin" type="date" max="' + tk + '" value="' + ui.sleepDate + '" data-field="sl-date">' +
+      '<div class="two"><div><label class="flbl" for="sl-bed">' + t("sl_bed") + '</label><input id="sl-bed" class="tin" type="time" value="' + esc(f.bed) + '" data-field="sl-bed"></div>' +
+      '<div><label class="flbl" for="sl-wake">' + t("sl_wake") + '</label><input id="sl-wake" class="tin" type="time" value="' + esc(f.wake) + '" data-field="sl-wake"></div></div>' +
+      '<div class="lbl" style="margin-top:12px">' + t("sl_quality") + '</div><div class="chips2">';
+    qs.forEach(function (em, i) { html += '<button class="wchip" data-act="slq" data-v="' + (i + 1) + '" aria-pressed="' + (f.q === i + 1) + '" aria-label="' + (i + 1) + '">' + em + "</button>"; });
+    html += '</div><textarea class="tin" data-field="sl-note" rows="2" maxlength="300" placeholder="' + esc(t("sl_note_ph")) + '" style="margin-top:10px">' + esc(f.note) + "</textarea>" +
+      '<div class="hint" id="slLive" style="margin-top:8px">' + esc(sleepLiveText()) + "</div>" +
+      '<div class="tools"><button class="btn primary" data-act="ssave">' + t("sl_save") + "</button>" +
+      (state.sleep[ui.sleepDate] ? '<button class="btn danger" data-act="sdel">' + t("sl_delete") + "</button>" : "") + "</div>" +
+      '<div class="hint" role="status">' + esc(ui.slMsg || "") + "</div></section>";
+
+    var ws = weekStartFor(0), wk = "";
+    for (var i = 0; i < 7; i++) {
+      var dd = addDays(ws, i), dk = key(dd), e2 = state.sleep[dk];
+      wk += '<button class="sqw ' + zcls(dd, today) + '" data-act="sdate" data-date="' + dk + '" aria-pressed="' + (dk === ui.sleepDate) + '"' + (dd > today ? " disabled" : "") + '><span>' + esc(F.day.format(dd)) + "</span><b>" + dd.getDate() + "</b><small>" + (e2 ? durTxt(e2) : "—") + "</small></button>";
+    }
+    var first = new Date(y, today.getMonth(), 1), lead = (first.getDay() - state.ws + 7) % 7, dim = new Date(y, today.getMonth() + 1, 0).getDate(), cal = "";
+    for (var li = 0; li < 7; li++) cal += '<span class="cwd">' + esc(wdName((state.ws + li) % 7, false)) + "</span>";
+    for (var b0 = 0; b0 < lead; b0++) cal += "<span></span>";
+    for (var dn = 1; dn <= dim; dn++) {
+      var cd = new Date(y, today.getMonth(), dn), ck = key(cd);
+      cal += '<button class="calc ' + zcls(cd, today) + '" data-act="sdate" data-date="' + ck + '" aria-pressed="' + (ck === ui.sleepDate) + '"' + (cd > today ? " disabled" : "") + ">" + dn + "</button>";
+    }
+    html += '<section class="card"><h2>' + t("d_this_week") + '</h2><div class="wk7">' + wk + "</div>" +
+      "<h3>" + esc(F.monthLong.format(today)) + '</h3><div class="cal">' + cal + "</div>" +
+      "<h3>" + t("d_this_year") + "</h3>" + sleepHeat(today) + '<p class="hint" style="margin:10px 0 0">' + t("sl_legend") + "</p></section>";
+
+    var r7 = recentNights(7, today), r30 = recentNights(30, today);
+    function avgLine(arr) {
+      if (!arr.length) return t("sl_none");
+      var dur = 0, bed = 0, wkm = 0;
+      arr.forEach(function (x) { dur += sleepDur(x.e); bed += bedNorm(x.e.bed); wkm += toMin(x.e.wake); });
+      return t("sl_avg_line", { d: hmTxt(dur / arr.length), b: fmtHM(bed / arr.length), w: fmtHM(wkm / arr.length) });
+    }
+    var tb = bedNorm(state.bedTarget), tw = toMin(state.wakeTarget), avgBed = null;
+    if (r30.length) avgBed = r30.reduce(function (s, x) { return s + bedNorm(x.e.bed); }, 0) / r30.length;
+    function rate(fn) { return r30.length ? Math.round(r30.filter(fn).length / r30.length * 100) : null; }
+    var bedR = rate(function (x) { return bedNorm(x.e.bed) <= tb + 15; });
+    var wakeR = rate(function (x) { return circDiff(toMin(x.e.wake), tw) <= 30; });
+    var consR = rate(function (x) { return Math.abs(bedNorm(x.e.bed) - avgBed) <= 30; });
+    var debt = 0; r7.forEach(function (x) { debt += Math.max(0, state.sleepGoal * 60 - sleepDur(x.e)); });
+    function rr(v, l) { var a = v === null ? { c: 0, p: 0 } : { c: v, p: 100 }; return '<div class="mini">' + ring(a, 64, 7, "--c5", l) + "<small>" + l + "</small></div>"; }
+    html += '<section class="card"><h2>' + t("sl_stats") + '</h2><div class="rn"><b>' + t("sl_avg7") + "</b><br>" + avgLine(r7) + '</div><div class="rn"><b>' + t("sl_avg30") + "</b><br>" + avgLine(r30) + "</div>" +
+      '<div class="minis" style="margin-top:14px">' + rr(bedR, t("sl_bed_rhythm")) + rr(wakeR, t("sl_wake_rhythm")) + rr(consR, t("sl_consistency")) + "</div>" +
+      '<p class="hint" style="margin:10px 0 0">' + t("sl_bed_rhythm_d") + " " + t("sl_wake_rhythm_d") + " " + t("sl_consistency_d") + "</p>" +
+      '<div class="rn"><b>' + t("sl_debt") + ":</b> " + hmTxt(debt) + "</div>";
+    var wsum = [], wcnt = [];
+    for (var z = 0; z < 7; z++) { wsum.push(0); wcnt.push(0); }
+    for (var k in state.sleep) { var wd = parseKey(k).getDay(); wsum[wd] += sleepDur(state.sleep[k]); wcnt[wd]++; }
+    var bars = "";
+    for (var o = 0; o < 7; o++) {
+      var w2 = (state.ws + o) % 7, avg = wcnt[w2] ? wsum[w2] / wcnt[w2] : 0, pc = Math.min(100, Math.round(avg / ((state.sleepGoal + 2) * 60) * 100));
+      bars += '<div class="bar"><span class="bl">' + esc(wdName(w2, false)) + '</span><span class="bt"><span class="bf" style="width:' + pc + '%;background:var(--c5)"></span></span><span class="bv">' + num(wcnt[w2] ? Math.floor(avg / 60) + ":" + pad(Math.round(avg % 60)) : "—") + "</span></div>";
+    }
+    html += "<h3>" + t("sl_weekday") + '</h3><div class="bars">' + bars + "</div></section>";
+
+    html += '<section class="card"><h2>' + t("sl_goals") + '</h2><div class="two"><div><label class="flbl" for="sg-h">' + t("sl_goal_h") + '</label><input id="sg-h" class="tin" type="number" step="0.5" min="4" max="12" value="' + state.sleepGoal + '" data-field="sg-h"></div><div></div></div>' +
+      '<div class="two"><div><label class="flbl" for="sg-bed">' + t("sl_goal_bed") + '</label><input id="sg-bed" class="tin" type="time" value="' + state.bedTarget + '" data-field="sg-bed"></div>' +
+      '<div><label class="flbl" for="sg-wake">' + t("sl_goal_wake") + '</label><input id="sg-wake" class="tin" type="time" value="' + state.wakeTarget + '" data-field="sg-wake"></div></div></section>';
+
+    var cw = ui.calcWake && validHM(ui.calcWake) ? ui.calcWake : state.wakeTarget, chips = "";
+    [6, 5, 4].forEach(function (cy) { chips += '<div class="calcchip"><b>' + fmtHM(toMin(cw) - cy * 90 - 15) + "</b><small>" + t("sl_cycles", { n: cy }) + "</small></div>"; });
+    html += '<section class="card"><h2>' + t("sl_calc") + '</h2><label class="flbl" for="calc-wake">' + t("sl_calc_wake") + '</label><input id="calc-wake" class="tin" type="time" value="' + cw + '" data-field="calc-wake">' +
+      '<div class="lbl" style="margin-top:12px">' + t("sl_calc_out") + '</div><div class="calcrow">' + chips + '</div><p class="hint" style="margin:10px 0 0">' + t("sl_calc_note") + "</p></section>";
+
+    var ev = "", tp = "";
+    for (var e1 = 1; e1 <= 7; e1++) ev += "<li>" + t("sl_e" + e1) + "</li>";
+    for (var t1 = 1; t1 <= 11; t1++) tp += "<li>" + t("sl_t" + t1) + "</li>";
+    html += '<section class="card"><h2>' + t("sl_early_title") + '</h2><ul class="tips">' + ev + "</ul></section>" +
+      '<section class="card"><h2>' + t("sl_tips_title") + '</h2><ul class="tips">' + tp + '</ul><p class="hint" style="margin:10px 0 0">' + t("sl_disclaimer") + "</p></section>";
+    box.innerHTML = html;
+  }
+
+  /* ---------- تصدير ---------- */
+  function csvCell(v) { v = String(v == null ? "" : v); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+  function buildCsv() {
+    var rows = [["date", "habit", "type", "status", "slots_done", "note"]], today = startOfToday();
+    state.habits.forEach(function (h) {
+      for (var d = firstActivity(h); d <= today; d = addDays(d, 1)) {
+        var dk = key(d), s;
+        if (doneK(dk, h.id)) s = "done";
+        else if (h.type === "slots" && slotsTotalDone(dk, h) > 0) s = "partial";
+        else if (isSlipK(dk, h.id)) s = "slip";
+        else if (isFrozenK(dk, h.id)) s = "frozen";
+        else if (!dueOn(h, d)) s = "rest";
+        else s = d < today ? "missed" : "pending";
+        rows.push([dk, h.name, h.type, s, h.type === "slots" ? slotsTotalDone(dk, h) : "", getNote(dk, h.id)]);
+      }
+    });
+    var out = rows.map(function (r) { return r.map(csvCell).join(","); }).join("\n");
+    var sk = Object.keys(state.sleep).sort();
+    if (sk.length) {
+      out += "\n\nsleep_date,bed,wake,minutes,score,quality,note";
+      sk.forEach(function (k) { var e = state.sleep[k]; out += "\n" + [k, e.bed, e.wake, Math.round(sleepDur(e)), sleepScore(e), e.q || "", e.note].map(csvCell).join(","); });
+    }
+    return out;
+  }
+
+  /* ---------- تفاعل ---------- */
+  function toast(msg) {
+    var b = el("toast");
+    b.innerHTML = msg; b.hidden = false;
+    clearTimeout(ui.toastTimer);
+    ui.toastTimer = setTimeout(function () { b.hidden = true; }, 6000);
+  }
+  function celebrate(h, dk) {
+    if (!doneK(dk, h.id)) return;
+    var n = streak(h);
+    if (MILESTONES.indexOf(n) !== -1) toast(t(h.type === "quit" ? "toast_ms_q" : "toast_ms", { n: n, name: esc(h.name) }));
+  }
+  function cellClick(h, dk) {
+    if (h.type === "quit") {
+      if (doneK(dk, h.id)) { setDone(dk, h.id, false); setFlag(state.slips, dk, h.id, true); }
+      else if (isSlipK(dk, h.id)) setFlag(state.slips, dk, h.id, false);
+      else setDone(dk, h.id, true);
+    } else setDone(dk, h.id, !doneK(dk, h.id));
+  }
+  function toggleFreeze(h, dk) {
+    if (isFrozenK(dk, h.id)) { setFlag(state.freeze, dk, h.id, false); return ""; }
+    if (parseKey(dk) > startOfToday()) return "toast_future";
+    if (doneK(dk, h.id)) return "toast_done";
+    if (freezesUsed(h, dk) >= FREEZES) return "toast_quota";
+    setFlag(state.freeze, dk, h.id, true); setFlag(state.slips, dk, h.id, false);
+    return "";
+  }
+  function addHabit(o) {
+    var h = { id: uid(), name: o.name, why: "", motivation: "", cue: "", createdAt: Date.now(), type: o.type, days: null, pauses: [], archived: false };
+    if (o.type === "slots") {
+      h.kind = o.kind; h.unit = o.kind === "water" ? "cup" : (o.kind === "meds" ? "dose" : "time"); h.slots = makeSlots(o.kind, o.n);
+    }
+    state.habits.push(h);
+    save(); render();
+  }
+  function submitNewHabit() {
+    var inp = el("newHabit"), nm = inp.value.trim(), ty = el("newType").value, kind = null, n = 0;
+    if (["prayers", "water", "meds", "multi"].indexOf(ty) !== -1) {
+      kind = ty;
+      var tg = parseInt(el("newTarget").value, 10);
+      n = kind === "prayers" ? 0 : Math.max(1, Math.min(30, tg || (kind === "water" ? 8 : 3)));
+    }
+    if (!nm) { if (kind) nm = t("def_" + kind); else { inp.focus(); return; } }
+    inp.value = ""; el("newTarget").value = "";
+    addHabit({ name: nm, type: kind ? "slots" : (ty === "quit" ? "quit" : "build"), kind: kind, n: n });
+  }
+  function removeHabit(id) {
+    state.habits = state.habits.filter(function (h) { return h.id !== id; });
+    [state.log, state.freeze, state.slips].forEach(function (m) {
+      for (var k in m) { m[k] = m[k].filter(function (x) { return x !== id; }); if (!m[k].length) delete m[k]; }
+    });
+    [state.notes, state.sd].forEach(function (m) {
+      for (var k2 in m) { delete m[k2][id]; if (!Object.keys(m[k2]).length) delete m[k2]; }
+    });
+    if (ui.expanded === id) { ui.expanded = null; ui.setOpen = null; }
+  }
+  function armDelete(tag, fn) {
+    if (ui.delArm === tag) { ui.delArm = null; clearTimeout(ui.delTimer); fn(); return; }
+    ui.delArm = tag; render();
+    clearTimeout(ui.delTimer);
+    ui.delTimer = setTimeout(function () { ui.delArm = null; render(); }, 3500);
+  }
+
+  document.addEventListener("click", function (e) {
+    var tg = e.target.closest("[data-act]");
+    if (!tg) return;
+    var act = tg.getAttribute("data-act"), id = tg.getAttribute("data-id"), h = id ? getHabit(id) : null;
+    if (act === "tab") { ui.page = tg.getAttribute("data-tab"); render(); }
+    else if (act === "theme") { state.theme = currentTheme() === "dark" ? "light" : "dark"; save(); applyTheme(); }
+    else if (act === "lang") { state.lang = state.lang === "en" ? "ar" : "en"; save(); applyLang(); }
+    else if (act === "editname") startEditName();
+    else if (act === "newquote") newQuote();
+    else if (act === "basis") { state.basis = tg.getAttribute("data-v") === "full" ? "full" : "sofar"; save(); render(); }
+    else if (act === "hm") { ui.hm = parseInt(tg.getAttribute("data-n"), 10) || 13; render(); }
+    else if (act === "pick") { var pk = tg.getAttribute("data-k"); ui.pick[pk] = !ui.pick[pk]; renderWelcome(); }
+    else if (act === "addcustom") addCustom();
+    else if (act === "start") {
+      var nm = el("wName").value.trim(), picks = pickedNames();
+      if (!nm || picks.length === 0) return;
+      state.name = nm.slice(0, 24);
+      state.habits = picks.map(function (n) { return { id: uid(), name: n, why: "", motivation: "", cue: "", createdAt: Date.now(), type: "build", days: null, pauses: [], archived: false }; });
+      state.log = {}; state.sd = {}; state.notes = {}; state.freeze = {}; state.slips = {};
+      state.onboarded = true; state.quote = null;
+      ui.page = "track"; ui.expanded = null; ui.setOpen = null;
+      save(); renderName(); renderQuote(); render();
+    }
+    else if (act === "toggle" && h) {
+      var dk = tg.getAttribute("data-date");
+      if (h.type === "slots") { ui.expanded = h.id; render(); return; }
+      cellClick(h, dk); save(); render(); celebrate(h, dk);
+    }
+    else if (act === "slot" && h) {
+      var sdk = tg.getAttribute("data-date"), sk = tg.getAttribute("data-k");
+      setSlot(sdk, h, sk, !slotDone(sdk, h, sk)); save(); render(); celebrate(h, sdk);
+    }
+    else if (act === "slotopt" && h) {
+      var so = h.slots.filter(function (s) { return s.k === tg.getAttribute("data-k"); })[0];
+      if (so) {
+        if (!so.o && reqSlots(h).length <= 1) return;
+        so.o = !so.o; recomputeSlots(h); save(); render();
+      }
+    }
+    else if (act === "prev") { weekOffset--; render(); }
+    else if (act === "next") { if (weekOffset < 0) { weekOffset++; render(); } }
+    else if (act === "add") submitNewHabit();
+    else if (act === "edit") { editMode = !editMode; ui.delArm = null; render(); }
+    else if (act === "expand") {
+      ui.expanded = ui.expanded === id ? null : id;
+      if (ui.expanded !== id) ui.setOpen = null;
+      render();
+    }
+    else if (act === "hset") { ui.setOpen = ui.setOpen === id ? null : id; render(); }
+    else if (act === "del") armDelete(id, function () { removeHabit(id); save(); render(); });
+    else if (act === "wd" && h) {
+      var wd = parseInt(tg.getAttribute("data-d"), 10), days = h.days ? h.days.slice() : [0, 1, 2, 3, 4, 5, 6], i = days.indexOf(wd);
+      if (i === -1) days.push(wd); else if (days.length > 1) days.splice(i, 1);
+      h.days = days.length >= 7 ? null : days;
+      save(); render();
+    }
+    else if (act === "wdall" && h) { h.days = null; save(); render(); }
+    else if (act === "selday") { ui.sel[id] = tg.getAttribute("data-date"); render(); }
+    else if (act === "freeze" && h) {
+      var err = toggleFreeze(h, ui.sel[id] || key(startOfToday()));
+      save(); render(); if (err) toast(t(err));
+    }
+    else if (act === "pause" && h) {
+      var today0 = startOfToday();
+      if (pausedNow(h)) {
+        var op = h.pauses.filter(function (p) { return !p.to; })[0], yk = key(addDays(today0, -1));
+        if (yk < op.from) h.pauses.splice(h.pauses.indexOf(op), 1); else op.to = yk;
+      } else h.pauses.push({ from: key(today0), to: null });
+      save(); render();
+    }
+    else if (act === "archive" && h) { h.archived = true; if (ui.expanded === id) { ui.expanded = null; ui.setOpen = null; } save(); render(); }
+    else if (act === "restore" && h) { h.archived = false; save(); render(); }
+    else if (act === "delfinal") armDelete("f" + id, function () { removeHabit(id); save(); render(); });
+    else if (act === "sdate") { ui.sleepDate = tg.getAttribute("data-date"); ui.sleepForm = null; ui.slMsg = ""; render(); }
+    else if (act === "slq") { var qv = parseInt(tg.getAttribute("data-v"), 10); ui.sleepForm.q = ui.sleepForm.q === qv ? 0 : qv; render(); }
+    else if (act === "ssave") {
+      var f = ui.sleepForm;
+      if (!f || !validHM(f.bed) || !validHM(f.wake)) return;
+      state.sleep[ui.sleepDate] = { bed: f.bed, wake: f.wake, q: f.q || 0, note: f.note || "" };
+      ui.slMsg = t("sl_saved"); save(); render();
+    }
+    else if (act === "sdel") { delete state.sleep[ui.sleepDate]; ui.sleepForm = null; ui.slMsg = t("sl_deleted"); save(); render(); }
+    else if (act === "bk-export") {
+      var ta2 = el("bkText"); ta2.value = JSON.stringify(state); ta2.focus(); ta2.select(); el("bkMsg").textContent = t("msg_export");
+    }
+    else if (act === "bk-csv") {
+      var ta3 = el("bkText"); ta3.value = buildCsv(); ta3.focus(); ta3.select(); el("bkMsg").textContent = t("msg_csv");
+    }
+    else if (act === "bk-import") {
+      var txt = el("bkText").value.trim();
+      if (!txt) { el("bkMsg").textContent = t("msg_empty"); return; }
+      try {
+        var s = normalize(JSON.parse(txt));
+        if (!s) { el("bkMsg").textContent = t("msg_bad1"); return; }
+        state = s; ui.expanded = null; ui.setOpen = null; ui.sel = {}; ui.sleepForm = null; ui.sleepDate = null;
+        save(); applyLang(); el("bkMsg").textContent = t("msg_ok");
+      } catch (err2) { el("bkMsg").textContent = t("msg_bad2"); }
+    }
+    else if (act === "reset") {
+      var btn = el("resetBtn");
+      if (!resetArmed) {
+        resetArmed = true; btn.textContent = t("reset_confirm");
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () { resetArmed = false; btn.textContent = t("reset"); }, 4000);
+      } else {
+        resetArmed = false; clearTimeout(resetTimer); btn.textContent = t("reset");
+        state = blankState(state.lang, { theme: state.theme, noRel: state.noRel, ws: state.ws });
+        ui.expanded = null; ui.setOpen = null; ui.pick = {}; ui.extra = []; ui.sel = {}; ui.page = "track"; ui.sleepForm = null; ui.sleepDate = null; ui.slMsg = "";
+        el("wName").value = "";
+        save(); syncSettings(); renderName(); renderQuote(); render();
+      }
+    }
+  });
+
+  document.addEventListener("input", function (e) {
+    var x = e.target;
+    if (!x || x.id === "nameInput") return;
+    if (x.id === "wName") { updateStartBtn(); return; }
+    var f = x.getAttribute ? x.getAttribute("data-field") : null;
+    if (!f) return;
+    if (f === "sl-bed" || f === "sl-wake") {
+      if (!ui.sleepForm) return;
+      ui.sleepForm[f.slice(3)] = x.value;
+      var live = el("slLive"); if (live) live.textContent = sleepLiveText();
+      return;
+    }
+    if (f === "sl-note") { if (ui.sleepForm) ui.sleepForm.note = x.value; return; }
+    if (f === "wr-a" || f === "wr-b") {
+      var wk = x.getAttribute("data-wk"), r = state.reviews[wk] || {};
+      r[f.slice(3)] = x.value;
+      if (!r.a && !r.b) delete state.reviews[wk]; else state.reviews[wk] = r;
+      save(); return;
+    }
+    var id = x.getAttribute("data-id"), h = getHabit(id);
+    if (!h) return;
+    if (f === "why" || f === "motivation" || f === "cue") { h[f] = x.value; save(); }
+    else if (f === "note") { setNote(x.getAttribute("data-date"), id, x.value); save(); }
+  });
+
+  document.addEventListener("change", function (e) {
+    var x = e.target;
+    if (!x) return;
+    if (x.id === "relToggle") { state.noRel = !x.checked; state.quote = null; save(); renderQuote(); return; }
+    if (x.id === "wsSel") { state.ws = parseInt(x.value, 10); save(); syncSettings(); render(); return; }
+    if (x.id === "newType") { el("newTarget").hidden = ["water", "meds", "multi"].indexOf(x.value) === -1; return; }
+    var f = x.getAttribute ? x.getAttribute("data-field") : null;
+    if (f === "sl-date") {
+      var v = x.value, today = startOfToday();
+      if (/^\d{4}-\d{2}-\d{2}$/.test(v) && parseKey(v) <= today) { ui.sleepDate = v; ui.sleepForm = null; ui.slMsg = ""; render(); }
+      return;
+    }
+    if (f === "sg-h") { var gh = parseFloat(x.value); if (gh >= 4 && gh <= 12) { state.sleepGoal = gh; save(); render(); } return; }
+    if (f === "sg-bed" || f === "sg-wake") { if (validHM(x.value)) { state[f === "sg-bed" ? "bedTarget" : "wakeTarget"] = x.value; save(); render(); } return; }
+    if (f === "calc-wake") { if (validHM(x.value)) { ui.calcWake = x.value; render(); } return; }
+    if (f === "slotn") {
+      var hh = getHabit(x.getAttribute("data-id")), n = parseInt(x.value, 10);
+      if (hh && hh.type === "slots" && hh.kind !== "prayers" && n >= 1 && n <= 30) {
+        var old = hh.slots, ns = makeSlots(hh.kind, n);
+        ns.forEach(function (s, i) { if (old[i]) s.o = old[i].o; });
+        hh.slots = ns;
+        var keep = {}; ns.forEach(function (s) { keep[s.k] = 1; });
+        for (var dk in state.sd) { var a = state.sd[dk][hh.id]; if (a) { var b = a.filter(function (k) { return keep[k]; }); if (b.length) state.sd[dk][hh.id] = b; else delete state.sd[dk][hh.id]; if (!Object.keys(state.sd[dk]).length) delete state.sd[dk]; } }
+        recomputeSlots(hh);
+        save(); render();
+      }
+      return;
+    }
+    if (x.classList && x.classList.contains("rename")) {
+      var id = x.getAttribute("data-id"), val = x.value.trim(), h2 = getHabit(id);
+      if (h2 && val) h2.name = val;
+      save(); render();
+    }
+  });
+
+  document.addEventListener("focusout", function (e) { if (e.target && e.target.id === "nameInput") finishEditName(); });
+  el("nameInput").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { finishEditName(); el("nameBtn").focus(); }
+    else if (e.key === "Escape") { finishEditName(true); el("nameBtn").focus(); }
+  });
+  el("newHabit").addEventListener("keydown", function (e) { if (e.key === "Enter") submitNewHabit(); });
+  el("wCustom").addEventListener("keydown", function (e) { if (e.key === "Enter") addCustom(); });
+
+  applyLang();
+})();
+</script>
+</body>
+</html>
